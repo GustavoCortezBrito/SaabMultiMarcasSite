@@ -8,6 +8,7 @@ declare module 'react-whatsapp-widget' {
     sendButton?: string;
     placeholder?: string;
     replyTimeText?: string;
+    textReplyTime?: string;
   }
 
   export const WhatsAppWidget: FC<WhatsAppWidgetProps>;
