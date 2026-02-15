@@ -6,12 +6,17 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "db": "json-server --watch db.json --port 3001"
   },
   "dependencies": {
+    "framer-motion": "^12.34.0",
+    "lucide-react": "^0.564.0",
     "next": "16.1.6",
+    "next-seo": "^7.2.0",
     "react": "19.2.3",
-    "react-dom": "19.2.3"
+    "react-dom": "19.2.3",
+    "react-whatsapp-widget": "^2.2.0"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -21,6 +26,7 @@
     "babel-plugin-react-compiler": "1.0.0",
     "eslint": "^9",
     "eslint-config-next": "16.1.6",
+    "json-server": "^1.0.0-beta.6",
     "tailwindcss": "^4",
     "typescript": "^5"
   }

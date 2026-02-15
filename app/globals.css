@@ -1,26 +1,66 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+* {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
+  overflow-x: hidden;
+  background: #ffffff;
+  color: #1a1a1a;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* WhatsApp Widget Custom Styles */
+.rww-widget-button {
+  background-color: #25D366 !important;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4) !important;
+  cursor: pointer !important;
+}
+
+.rww-widget-button:hover {
+  background-color: #20BA5A !important;
+  transform: scale(1.1) !important;
+  cursor: pointer !important;
+}
+
+.rww-widget-button svg {
+  color: white !important;
+  fill: white !important;
+}
+
+/* Force green background on all button states */
+.rww-widget-button,
+.rww-widget-button:active,
+.rww-widget-button:focus,
+.rww-widget-button:visited,
+.rww-widget-button > div,
+.rww-widget-button span {
+  background-color: #25D366 !important;
+}
+
+/* Target the button container */
+div[class*="rww"] button,
+div[class*="widget"] button {
+  background-color: #25D366 !important;
+}
+
+.rww-widget-header {
+  background: linear-gradient(135deg, #0F5FA8 0%, #0a4580 100%) !important;
+}
+
+.rww-send-button {
+  background-color: #D4A853 !important;
+  cursor: pointer !important;
+}
+
+.rww-send-button:hover {
+  background-color: #c49843 !important;
+  cursor: pointer !important;
+}
+
+/* Global button cursor */
+button, a, [role="button"] {
+  cursor: pointer;
+}
+

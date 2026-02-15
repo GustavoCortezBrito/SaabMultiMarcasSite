@@ -1,36 +1,69 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Saab Multimarcas - Landing Page
 
-## Getting Started
+Landing page moderna desenvolvida com Next.js, React, Tailwind CSS, Framer Motion e Next SEO.
 
-First, run the development server:
+## 🚀 Tecnologias
+
+- **Next.js 15** - Framework React
+- **React 19** - Biblioteca JavaScript
+- **Tailwind CSS** - Framework CSS
+- **Framer Motion** - Animações
+- **Next SEO** - Otimização para motores de busca
+- **TypeScript** - Tipagem estática
+
+## 📦 Instalação
+
+```bash
+cd saab-multimarcas
+npm install
+```
+
+## 🏃 Executar o projeto
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Acesse [http://localhost:3000](http://localhost:3000) no navegador.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## 🏗️ Estrutura do Projeto
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```
+saab-multimarcas/
+├── app/
+│   ├── layout.tsx       # Layout principal
+│   ├── page.tsx         # Página inicial
+│   └── globals.css      # Estilos globais
+├── components/
+│   ├── Hero.tsx         # Seção hero
+│   ├── About.tsx        # Sobre a empresa
+│   ├── Partners.tsx     # Marcas parceiras
+│   ├── Services.tsx     # Serviços oferecidos
+│   ├── Contact.tsx      # Formulário de contato
+│   └── Footer.tsx       # Rodapé
+└── next-seo.config.ts   # Configuração SEO
+```
 
-## Learn More
+## 🎨 Características
 
-To learn more about Next.js, take a look at the following resources:
+- Design moderno e responsivo
+- Animações suaves com Framer Motion
+- Gradientes e efeitos visuais
+- Otimizado para SEO
+- Performance otimizada
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 📝 Marcas Parceiras
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+- TCar - Thiago tcar
+- Dsm Multimarcas - Daniel Ribeiro
+- André Veículos - André
+- Guga Gadelha
+- Marcelo Cruz
+- Sérgio Ferraz
 
-## Deploy on Vercel
+## 🔧 Build para Produção
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```bash
+npm run build
+npm start
+```
