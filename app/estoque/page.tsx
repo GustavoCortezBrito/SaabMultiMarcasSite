@@ -2,6 +2,7 @@
 
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
+import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import WhatsAppButton from "@/components/WhatsAppButton";
@@ -10,6 +11,7 @@ import Link from "next/link";
 import { vehicleAPI, Vehicle } from "@/lib/api";
 
 export default function EstoquePage() {
+  const searchParams = useSearchParams();
   const [selectedBrand, setSelectedBrand] = useState("Todas");
   const [selectedYear, setSelectedYear] = useState("Todos");
   const [searchTerm, setSearchTerm] = useState("");
@@ -20,7 +22,14 @@ export default function EstoquePage() {
   // Carregar veículos da API
   useEffect(() => {
     loadVehicles();
-  }, []);
+    
+    // Aplicar filtros da URL
+    const brandParam = searchParams.get("brand");
+    const yearParam = searchParams.get("year");
+    
+    if (brandParam) setSelectedBrand(brandParam);
+    if (yearParam) setSelectedYear(yearParam);
+  }, [searchParams]);
 
   const loadVehicles = async () => {
     try {

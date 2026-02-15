@@ -2,9 +2,23 @@
 
 import { motion } from "framer-motion";
 import { Search } from "lucide-react";
+import { useState } from "react";
+import { useRouter } from "next/navigation";
 import Logo from "./Logo";
 
 export default function Hero() {
+  const router = useRouter();
+  const [selectedBrand, setSelectedBrand] = useState("");
+  const [selectedYear, setSelectedYear] = useState("");
+
+  const handleSearch = () => {
+    const params = new URLSearchParams();
+    if (selectedBrand) params.set("brand", selectedBrand);
+    if (selectedYear) params.set("year", selectedYear);
+    
+    router.push(`/estoque${params.toString() ? `?${params.toString()}` : ""}`);
+  };
+
   return (
     <section className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0F5FA8]">
       {/* Background Pattern */}
@@ -47,38 +61,40 @@ export default function Hero() {
             className="max-w-4xl mx-auto bg-white rounded-2xl shadow-2xl p-6"
           >
             <div className="grid md:grid-cols-4 gap-4">
-              <select className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium">
-                <option>Todas as Marcas</option>
-                <option>Audi</option>
-                <option>BMW</option>
-                <option>Chevrolet</option>
-                <option>Fiat</option>
-                <option>Ford</option>
-                <option>Honda</option>
-                <option>Hyundai</option>
-                <option>Jeep</option>
-                <option>Mercedes-Benz</option>
-                <option>Nissan</option>
-                <option>Porsche</option>
-                <option>Renault</option>
-                <option>Toyota</option>
-                <option>Volkswagen</option>
+              <select 
+                value={selectedBrand}
+                onChange={(e) => setSelectedBrand(e.target.value)}
+                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium cursor-pointer"
+              >
+                <option value="">Todas as Marcas</option>
+                <option value="Volkswagen">Volkswagen</option>
+                <option value="RAM">RAM</option>
+                <option value="Hyundai">Hyundai</option>
+                <option value="Honda">Honda</option>
+                <option value="Chevrolet">Chevrolet</option>
               </select>
               
-              <select className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium">
+              <select className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium cursor-pointer">
                 <option>Todos os Modelos</option>
               </select>
               
-              <select className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium">
-                <option>Ano</option>
-                <option>2024</option>
-                <option>2023</option>
-                <option>2022</option>
-                <option>2021</option>
-                <option>2020</option>
+              <select 
+                value={selectedYear}
+                onChange={(e) => setSelectedYear(e.target.value)}
+                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium cursor-pointer"
+              >
+                <option value="">Todos os Anos</option>
+                <option value="2025">2025</option>
+                <option value="2024">2024</option>
+                <option value="2023">2023</option>
+                <option value="2019">2019</option>
+                <option value="2018">2018</option>
+                <option value="2015">2015</option>
+                <option value="2008">2008</option>
               </select>
               
               <motion.button
+                onClick={handleSearch}
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
                 className="bg-[#D4A853] text-[#0F5FA8] px-6 py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-[#f4d084] transition-colors cursor-pointer"
