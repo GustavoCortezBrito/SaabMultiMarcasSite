@@ -16,7 +16,7 @@
     "next-seo": "^7.2.0",
     "react": "19.2.3",
     "react-dom": "19.2.3",
-    "react-whatsapp-widget": "^2.2.0"
+    "react-floating-whatsapp": "^5.0.8"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
