@@ -70,7 +70,7 @@ export default function Contact() {
           </p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 gap-12">
+        <div className="grid md:grid-cols-2 gap-12 mb-16">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
             animate={isInView ? { opacity: 1, x: 0 } : {}}
@@ -229,6 +229,25 @@ export default function Contact() {
             </form>
           </motion.div>
         </div>
+
+        {/* Mapa */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.4, duration: 0.6 }}
+          className="bg-white rounded-2xl overflow-hidden shadow-lg"
+        >
+          <iframe
+            src="https://www.google.com/maps?q=Av.+Joaquim+Constantino,+1868,+Vila+Formosa,+Presidente+Prudente,+SP,+19050-220&output=embed"
+            width="100%"
+            height="450"
+            style={{ border: 0 }}
+            allowFullScreen
+            loading="lazy"
+            referrerPolicy="no-referrer-when-downgrade"
+            title="Localização SAAB Multimarcas"
+          />
+        </motion.div>
       </div>
     </section>
   );
