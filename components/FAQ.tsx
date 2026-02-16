@@ -53,26 +53,37 @@ export default function FAQ() {
     <section ref={ref} className="py-20 px-4 bg-white" id="faq">
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4">
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4"
+          >
             Perguntas <span className="text-[#D4A853]">Frequentes</span>
-          </h2>
-          <p className="text-gray-600 text-lg">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-gray-600 text-lg"
+          >
             Tire suas dúvidas sobre compra, financiamento e documentação
-          </p>
+          </motion.p>
         </motion.div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 20 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.1, duration: 0.5 }}
+              initial={{ opacity: 0, x: -30 }}
+              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
+              transition={{ delay: 0.6 + (index * 0.08), duration: 0.5 }}
+              whileHover={{ scale: 1.01 }}
               className="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-[#D4A853] transition-colors"
             >
               <button
@@ -92,26 +103,29 @@ export default function FAQ() {
               </button>
               
               <motion.div
-                initial={false}
                 animate={{
                   height: openIndex === index ? "auto" : 0,
                   opacity: openIndex === index ? 1 : 0
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.3, ease: "easeInOut" }}
                 className="overflow-hidden"
               >
-                <div className="px-6 pb-5 text-gray-700 leading-relaxed">
+                <motion.div 
+                  initial={{ y: -10 }}
+                  animate={{ y: 0 }}
+                  className="px-6 pb-5 text-gray-700 leading-relaxed"
+                >
                   {faq.answer}
-                </div>
+                </motion.div>
               </motion.div>
             </motion.div>
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0 }}
-          animate={isInView ? { opacity: 1 } : {}}
-          transition={{ delay: 0.8, duration: 0.6 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
+          transition={{ delay: 1.4, duration: 0.6 }}
           className="mt-12 text-center"
         >
           <p className="text-gray-600 mb-4">
@@ -119,6 +133,9 @@ export default function FAQ() {
           </p>
           <motion.a
             href="#contato"
+            initial={{ scale: 0.9 }}
+            animate={isInView ? { scale: 1 } : { scale: 0.9 }}
+            transition={{ delay: 1.6, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             className="inline-block bg-[#D4A853] text-[#0F5FA8] px-8 py-3 rounded-lg font-bold hover:bg-[#f4d084] transition-colors cursor-pointer"

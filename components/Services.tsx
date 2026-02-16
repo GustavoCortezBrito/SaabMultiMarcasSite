@@ -46,31 +46,47 @@ export default function Services() {
     <section id="servicos" ref={ref} className="py-20 px-4 bg-white">
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4">
+          <motion.h2 
+            initial={{ opacity: 0, scale: 0.9 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
+            transition={{ duration: 0.6, delay: 0.2 }}
+            className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4"
+          >
             Nossos <span className="text-[#D4A853]">Serviços</span>
-          </h2>
-          <p className="text-gray-600 text-lg">
+          </motion.h2>
+          <motion.p 
+            initial={{ opacity: 0 }}
+            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
+            className="text-gray-600 text-lg"
+          >
             Compra, venda e troca com financiamento facilitado
-          </p>
+          </motion.p>
         </motion.div>
         
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
           {services.map((service, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ delay: index * 0.1, duration: 0.6 }}
-              whileHover={{ y: -8 }}
-              className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-[#D4A853] hover:shadow-lg transition-all"
+              initial={{ opacity: 0, y: 60, scale: 0.9 }}
+              animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 60, scale: 0.9 }}
+              transition={{ delay: 0.6 + (index * 0.1), duration: 0.6, type: "spring", stiffness: 100 }}
+              whileHover={{ y: -8, scale: 1.02 }}
+              className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-[#D4A853] hover:shadow-lg transition-all group"
             >
-              <div className="text-[#D4A853] mb-4">{service.icon}</div>
-              <h3 className="text-xl font-bold text-[#0F5FA8] mb-3">{service.title}</h3>
+              <motion.div 
+                className="text-[#D4A853] mb-4"
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                transition={{ type: "spring", stiffness: 300 }}
+              >
+                {service.icon}
+              </motion.div>
+              <h3 className="text-xl font-bold text-[#0F5FA8] mb-3 group-hover:text-[#D4A853] transition-colors">{service.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
             </motion.div>
           ))}

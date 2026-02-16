@@ -56,10 +56,16 @@ export default function Header() {
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
+                whileHover={{ y: -2 }}
                 className="text-white hover:text-[#D4A853] font-medium transition-colors relative group"
               >
                 {item.name}
-                <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#D4A853] group-hover:w-full transition-all duration-300" />
+                <motion.span 
+                  className="absolute bottom-0 left-0 h-0.5 bg-[#D4A853]"
+                  initial={{ width: 0 }}
+                  whileHover={{ width: "100%" }}
+                  transition={{ duration: 0.3 }}
+                />
               </motion.a>
             ))}
           </nav>
