@@ -30,7 +30,7 @@ export default function Hero() {
   };
 
   return (
-    <section ref={ref} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#0F5FA8]">
+    <section ref={ref} className="relative min-h-[90vh] flex items-center justify-center overflow-hidden bg-[#004c97]">
       {/* Particles Background */}
       <ParticlesBackground />
       
@@ -88,7 +88,7 @@ export default function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1, duration: 0.5 }}
                 whileFocus={{ scale: 1.02 }}
-                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium cursor-pointer transition-all"
+                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none text-gray-700 font-medium cursor-pointer transition-all"
               >
                 <option value="">Todas as Marcas</option>
                 <option value="Volkswagen">Volkswagen</option>
@@ -103,7 +103,7 @@ export default function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.1, duration: 0.5 }}
                 whileFocus={{ scale: 1.02 }}
-                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium cursor-pointer transition-all"
+                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none text-gray-700 font-medium cursor-pointer transition-all"
               >
                 <option>Todos os Modelos</option>
               </motion.select>
@@ -115,7 +115,7 @@ export default function Hero() {
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ delay: 1.2, duration: 0.5 }}
                 whileFocus={{ scale: 1.02 }}
-                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none text-gray-700 font-medium cursor-pointer transition-all"
+                className="px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none text-gray-700 font-medium cursor-pointer transition-all"
               >
                 <option value="">Todos os Anos</option>
                 <option value="2025">2025</option>
@@ -134,7 +134,7 @@ export default function Hero() {
                 transition={{ delay: 1.3, duration: 0.5, type: "spring" }}
                 whileHover={{ scale: 1.05 }}
                 whileTap={{ scale: 0.95 }}
-                className="bg-[#D4A853] text-[#0F5FA8] px-6 py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-[#f4d084] transition-colors cursor-pointer shadow-lg hover:shadow-xl"
+                className="bg-[#ddb963] text-[#004c97] px-6 py-3 rounded-lg font-bold flex items-center justify-center gap-2 hover:bg-[#e8c77d] transition-colors cursor-pointer shadow-lg hover:shadow-xl"
               >
                 <Search size={20} />
                 Buscar

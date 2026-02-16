@@ -1,0 +1,21 @@
+{
+  "name": "SAAB Multimarcas",
+  "short_name": "SAAB",
+  "description": "Revenda de veículos em Presidente Prudente - SP",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#004c97",
+  "theme_color": "#004c97",
+  "icons": [
+    {
+      "src": "/saab-logo.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "/saab-logo.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}

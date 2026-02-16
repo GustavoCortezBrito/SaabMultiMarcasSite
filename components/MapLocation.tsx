@@ -18,8 +18,8 @@ export default function MapLocation() {
           transition={{ duration: 0.6 }}
           className="text-center mb-12"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4">
-            Nossa <span className="text-[#D4A853]">Localização</span>
+          <h2 className="text-4xl md:text-5xl font-bold text-[#004c97] mb-4">
+            Nossa <span className="text-[#ddb963]">Localização</span>
           </h2>
           <p className="text-gray-600 text-lg">
             Visite nossa loja em Presidente Prudente - SP
@@ -36,11 +36,11 @@ export default function MapLocation() {
           >
             <div className="bg-white rounded-2xl p-8 shadow-lg">
               <div className="flex items-start gap-4 mb-6">
-                <div className="bg-[#0F5FA8] p-3 rounded-lg">
+                <div className="bg-[#004c97] p-3 rounded-lg">
                   <MapPin className="text-white" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#0F5FA8] mb-2">Endereço</h3>
+                  <h3 className="text-xl font-bold text-[#004c97] mb-2">Endereço</h3>
                   <p className="text-gray-700">
                     Av. Joaquim Constantino, 1868<br />
                     Vila Formosa<br />
@@ -51,14 +51,14 @@ export default function MapLocation() {
               </div>
 
               <div className="flex items-start gap-4 mb-6">
-                <div className="bg-[#D4A853] p-3 rounded-lg">
+                <div className="bg-[#ddb963] p-3 rounded-lg">
                   <Phone className="text-white" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#0F5FA8] mb-2">Telefone</h3>
+                  <h3 className="text-xl font-bold text-[#004c97] mb-2">Telefone</h3>
                   <a 
                     href="tel:+5518997251860" 
-                    className="text-gray-700 hover:text-[#D4A853] transition-colors"
+                    className="text-gray-700 hover:text-[#ddb963] transition-colors"
                   >
                     (18) 99725-1860
                   </a>
@@ -66,11 +66,11 @@ export default function MapLocation() {
               </div>
 
               <div className="flex items-start gap-4">
-                <div className="bg-[#0F5FA8] p-3 rounded-lg">
+                <div className="bg-[#004c97] p-3 rounded-lg">
                   <Clock className="text-white" size={24} />
                 </div>
                 <div>
-                  <h3 className="text-xl font-bold text-[#0F5FA8] mb-2">Horário de Funcionamento</h3>
+                  <h3 className="text-xl font-bold text-[#004c97] mb-2">Horário de Funcionamento</h3>
                   <div className="text-gray-700 space-y-1">
                     <p><span className="font-semibold">Segunda a Sexta:</span> 08:00 - 18:00</p>
                     <p><span className="font-semibold">Sábado:</span> 08:00 - 12:00</p>
@@ -85,7 +85,7 @@ export default function MapLocation() {
                 rel="noopener noreferrer"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="mt-6 w-full bg-[#D4A853] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#c49843] transition-colors cursor-pointer flex items-center justify-center gap-2"
+                className="mt-6 w-full bg-[#ddb963] text-white px-6 py-3 rounded-lg font-bold hover:bg-[#c9a855] transition-colors cursor-pointer flex items-center justify-center gap-2"
               >
                 <MapPin size={20} />
                 Como Chegar
@@ -124,7 +124,7 @@ export default function MapLocation() {
             href="https://www.google.com/maps/search/?api=1&query=SAAB+Multimarcas+Presidente+Prudente"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center gap-2 text-[#0F5FA8] hover:text-[#D4A853] transition-colors font-semibold"
+            className="inline-flex items-center gap-2 text-[#004c97] hover:text-[#ddb963] transition-colors font-semibold"
           >
             Ver fotos e avaliações no Google Maps
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">

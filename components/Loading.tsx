@@ -22,7 +22,7 @@ export default function Loading() {
       initial={{ opacity: 1 }}
       exit={{ opacity: 0 }}
       transition={{ duration: 0.5 }}
-      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#0F5FA8]"
+      className="fixed inset-0 z-[100] flex items-center justify-center bg-[#004c97]"
     >
       <div className="text-center">
         {/* Logo Animation */}
@@ -51,7 +51,7 @@ export default function Loading() {
           {[0, 1, 2].map((index) => (
             <motion.div
               key={index}
-              className="w-3 h-3 bg-[#D4A853] rounded-full"
+              className="w-3 h-3 bg-[#ddb963] rounded-full"
               animate={{
                 y: [0, -15, 0],
                 opacity: [1, 0.5, 1]
@@ -82,7 +82,7 @@ export default function Loading() {
         className="absolute bottom-0 left-0 right-0 h-1 bg-white/20"
       >
         <motion.div
-          className="h-full bg-[#D4A853]"
+          className="h-full bg-[#ddb963]"
           initial={{ width: "0%" }}
           animate={{ width: "100%" }}
           transition={{ duration: 2.5, ease: "easeInOut" }}

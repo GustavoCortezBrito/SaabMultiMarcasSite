@@ -31,7 +31,7 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0F5FA8] relative overflow-hidden flex items-center justify-center p-4">
+    <div className="min-h-screen bg-[#004c97] relative overflow-hidden flex items-center justify-center p-4">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -40,7 +40,7 @@ export default function AdminLogin() {
       </div>
 
       {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#0F5FA8] via-[#0a4580] to-[#062d54]"></div>
+      <div className="absolute inset-0 bg-gradient-to-br from-[#004c97] via-[#003366] to-[#062d54]"></div>
 
       <motion.div
         initial={{ opacity: 0, y: 30 }}
@@ -51,7 +51,7 @@ export default function AdminLogin() {
         {/* Card Principal */}
         <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
           {/* Header com Logo */}
-          <div className="bg-gradient-to-r from-[#0F5FA8] to-[#0a4580] px-8 py-10 text-center">
+          <div className="bg-gradient-to-r from-[#004c97] to-[#003366] px-8 py-10 text-center">
             <motion.div
               initial={{ scale: 0.8, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
@@ -76,12 +76,12 @@ export default function AdminLogin() {
                   Usuário
                 </label>
                 <div className="relative group">
-                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#D4A853] transition-colors" size={20} />
+                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#ddb963] transition-colors" size={20} />
                   <input
                     type="text"
                     value={credentials.username}
                     onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#D4A853] focus:outline-none transition-all bg-gray-50 focus:bg-white"
+                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#ddb963] focus:outline-none transition-all bg-gray-50 focus:bg-white"
                     placeholder="Digite seu usuário"
                     required
                     disabled={isLoading}
@@ -99,12 +99,12 @@ export default function AdminLogin() {
                   Senha
                 </label>
                 <div className="relative group">
-                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#D4A853] transition-colors" size={20} />
+                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#ddb963] transition-colors" size={20} />
                   <input
                     type={showPassword ? "text" : "password"}
                     value={credentials.password}
                     onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-                    className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#D4A853] focus:outline-none transition-all bg-gray-50 focus:bg-white"
+                    className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#ddb963] focus:outline-none transition-all bg-gray-50 focus:bg-white"
                     placeholder="Digite sua senha"
                     required
                     disabled={isLoading}
@@ -138,7 +138,7 @@ export default function AdminLogin() {
                 disabled={isLoading}
                 whileHover={{ scale: isLoading ? 1 : 1.02 }}
                 whileTap={{ scale: isLoading ? 1 : 0.98 }}
-                className="w-full bg-gradient-to-r from-[#D4A853] to-[#f4d084] text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden group"
+                className="w-full bg-gradient-to-r from-[#ddb963] to-[#e8c77d] text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden group"
               >
                 {isLoading ? (
                   <span className="flex items-center justify-center gap-2">
@@ -151,7 +151,7 @@ export default function AdminLogin() {
                 ) : (
                   <>
                     <span className="relative z-10">Acessar Painel</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#f4d084] to-[#D4A853] opacity-0 group-hover:opacity-100 transition-opacity"></div>
+                    <div className="absolute inset-0 bg-gradient-to-r from-[#e8c77d] to-[#ddb963] opacity-0 group-hover:opacity-100 transition-opacity"></div>
                   </>
                 )}
               </motion.button>

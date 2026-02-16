@@ -62,9 +62,9 @@ export default function FAQ() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4"
+            className="text-4xl md:text-5xl font-bold text-[#004c97] mb-4"
           >
-            Perguntas <span className="text-[#D4A853]">Frequentes</span>
+            Perguntas <span className="text-[#ddb963]">Frequentes</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -84,13 +84,13 @@ export default function FAQ() {
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
               transition={{ delay: 0.6 + (index * 0.08), duration: 0.5 }}
               whileHover={{ scale: 1.01 }}
-              className="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-[#D4A853] transition-colors"
+              className="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-[#ddb963] transition-colors"
             >
               <button
                 onClick={() => toggleFAQ(index)}
                 className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-100 transition-colors cursor-pointer"
               >
-                <span className="font-bold text-[#0F5FA8] text-lg pr-4">
+                <span className="font-bold text-[#004c97] text-lg pr-4">
                   {faq.question}
                 </span>
                 <motion.div
@@ -98,7 +98,7 @@ export default function FAQ() {
                   transition={{ duration: 0.3 }}
                   className="flex-shrink-0"
                 >
-                  <ChevronDown className="text-[#D4A853]" size={24} />
+                  <ChevronDown className="text-[#ddb963]" size={24} />
                 </motion.div>
               </button>
               
@@ -138,7 +138,7 @@ export default function FAQ() {
             transition={{ delay: 1.6, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-[#D4A853] text-[#0F5FA8] px-8 py-3 rounded-lg font-bold hover:bg-[#f4d084] transition-colors cursor-pointer"
+            className="inline-block bg-[#ddb963] text-[#004c97] px-8 py-3 rounded-lg font-bold hover:bg-[#e8c77d] transition-colors cursor-pointer"
           >
             Entre em Contato
           </motion.a>

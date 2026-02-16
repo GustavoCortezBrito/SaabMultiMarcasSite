@@ -6,7 +6,7 @@ import Logo from "./Logo";
 
 export default function Footer() {
   return (
-    <footer className="relative bg-gradient-to-br from-[#0F5FA8] via-[#0a4580] to-[#0F5FA8] overflow-hidden">
+    <footer className="relative bg-gradient-to-br from-[#004c97] via-[#003366] to-[#004c97] overflow-hidden">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -38,9 +38,9 @@ export default function Footer() {
                 href="https://www.instagram.com/saab_multimarcas/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-[#D4A853] transition-all group cursor-pointer"
+                className="bg-white/10 backdrop-blur-sm p-3 rounded-xl hover:bg-[#ddb963] transition-all group cursor-pointer"
               >
-                <Instagram size={20} className="text-white group-hover:text-[#0F5FA8] transition-colors" />
+                <Instagram size={20} className="text-white group-hover:text-[#004c97] transition-colors" />
               </motion.a>
               <motion.a
                 whileHover={{ scale: 1.1, y: -3 }}
@@ -62,8 +62,8 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.1, duration: 0.6 }}
           >
-            <h4 className="text-xl font-bold text-[#D4A853] mb-6 flex items-center gap-2">
-              <div className="w-1 h-6 bg-[#D4A853] rounded-full" />
+            <h4 className="text-xl font-bold text-[#ddb963] mb-6 flex items-center gap-2">
+              <div className="w-1 h-6 bg-[#ddb963] rounded-full" />
               Links Rápidos
             </h4>
             <ul className="space-y-3">
@@ -82,9 +82,9 @@ export default function Footer() {
                 >
                   <a 
                     href={link.href} 
-                    className="text-white/80 hover:text-[#D4A853] transition-colors text-sm flex items-center gap-2 group cursor-pointer"
+                    className="text-white/80 hover:text-[#ddb963] transition-colors text-sm flex items-center gap-2 group cursor-pointer"
                   >
-                    <span className="w-1.5 h-1.5 bg-[#D4A853] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
+                    <span className="w-1.5 h-1.5 bg-[#ddb963] rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
                     {link.label}
                   </a>
                 </motion.li>
@@ -99,27 +99,27 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
-            <h4 className="text-xl font-bold text-[#D4A853] mb-6 flex items-center gap-2">
-              <div className="w-1 h-6 bg-[#D4A853] rounded-full" />
+            <h4 className="text-xl font-bold text-[#ddb963] mb-6 flex items-center gap-2">
+              <div className="w-1 h-6 bg-[#ddb963] rounded-full" />
               Contato
             </h4>
             <ul className="space-y-4">
               <li>
                 <a 
                   href="tel:+5518997251860" 
-                  className="text-white/80 hover:text-[#D4A853] transition-colors text-sm flex items-start gap-3 group cursor-pointer"
+                  className="text-white/80 hover:text-[#ddb963] transition-colors text-sm flex items-start gap-3 group cursor-pointer"
                 >
-                  <Phone size={18} className="text-[#D4A853] mt-0.5 flex-shrink-0" />
+                  <Phone size={18} className="text-[#ddb963] mt-0.5 flex-shrink-0" />
                   <span>(18) 99725-1860</span>
                 </a>
               </li>
               <li>
                 <a 
-                  href="mailto:contato@saabmultimarcas.com.br" 
-                  className="text-white/80 hover:text-[#D4A853] transition-colors text-sm flex items-start gap-3 group cursor-pointer"
+                  href="mailto:Adm.saabmultimarcas@gmail.com" 
+                  className="text-white/80 hover:text-[#ddb963] transition-colors text-sm flex items-start gap-3 group cursor-pointer"
                 >
-                  <Mail size={18} className="text-[#D4A853] mt-0.5 flex-shrink-0" />
-                  <span>contato@saabmultimarcas.com.br</span>
+                  <Mail size={18} className="text-[#ddb963] mt-0.5 flex-shrink-0" />
+                  <span>Adm.saabmultimarcas@gmail.com</span>
                 </a>
               </li>
               <li>
@@ -127,9 +127,9 @@ export default function Footer() {
                   href="https://maps.google.com/?q=Av.+Joaquim+Constantino,+1868+-+Vila+Formosa,+Pres.+Prudente+-+SP,+19050-220" 
                   target="_blank" 
                   rel="noopener noreferrer"
-                  className="text-white/80 hover:text-[#D4A853] transition-colors text-sm flex items-start gap-3 group cursor-pointer"
+                  className="text-white/80 hover:text-[#ddb963] transition-colors text-sm flex items-start gap-3 group cursor-pointer"
                 >
-                  <MapPin size={18} className="text-[#D4A853] mt-0.5 flex-shrink-0" />
+                  <MapPin size={18} className="text-[#ddb963] mt-0.5 flex-shrink-0" />
                   <span>
                     Av. Joaquim Constantino, 1868<br />
                     Vila Formosa<br />
@@ -147,17 +147,17 @@ export default function Footer() {
             viewport={{ once: true }}
             transition={{ delay: 0.3, duration: 0.6 }}
           >
-            <h4 className="text-xl font-bold text-[#D4A853] mb-6 flex items-center gap-2">
-              <div className="w-1 h-6 bg-[#D4A853] rounded-full" />
+            <h4 className="text-xl font-bold text-[#ddb963] mb-6 flex items-center gap-2">
+              <div className="w-1 h-6 bg-[#ddb963] rounded-full" />
               Horário
             </h4>
             <div className="space-y-3 text-sm">
               <div className="flex items-start gap-3">
-                <Clock size={18} className="text-[#D4A853] mt-0.5 flex-shrink-0" />
+                <Clock size={18} className="text-[#ddb963] mt-0.5 flex-shrink-0" />
                 <div className="text-white/80">
                   <p className="font-semibold text-white mb-2">Funcionamento:</p>
-                  <p>Segunda a Sexta<br /><span className="text-[#D4A853]">08:00 - 18:00</span></p>
-                  <p className="mt-2">Sábado<br /><span className="text-[#D4A853]">08:00 - 12:00</span></p>
+                  <p>Segunda a Sexta<br /><span className="text-[#ddb963]">08:00 - 18:00</span></p>
+                  <p className="mt-2">Sábado<br /><span className="text-[#ddb963]">08:00 - 12:00</span></p>
                   <p className="mt-2">Domingo<br /><span className="text-white/50">Fechado</span></p>
                 </div>
               </div>
@@ -183,7 +183,7 @@ export default function Footer() {
                 href="https://www.instagram.com/gustavocortez.dev/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-[#D4A853] hover:text-[#f4d084] transition-colors font-semibold cursor-pointer"
+                className="text-[#ddb963] hover:text-[#e8c77d] transition-colors font-semibold cursor-pointer"
               >
                 Gustavo Cortez de Brito
               </a>

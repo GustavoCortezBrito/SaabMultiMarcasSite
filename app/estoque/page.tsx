@@ -65,9 +65,9 @@ function EstoqueContent() {
       <Header />
       <main className="min-h-screen bg-white">
         {/* Hero Section */}
-        <section className="bg-[#0F5FA8] pt-32 pb-16 px-4">
+        <section className="bg-[#004c97] pt-32 pb-16 px-4">
           <div className="max-w-7xl mx-auto">
-            <Link href="/" className="inline-flex items-center gap-2 text-white hover:text-[#D4A853] transition-colors mb-6 cursor-pointer">
+            <Link href="/" className="inline-flex items-center gap-2 text-white hover:text-[#ddb963] transition-colors mb-6 cursor-pointer">
               <ArrowLeft size={20} />
               Voltar para Home
             </Link>
@@ -78,7 +78,7 @@ function EstoqueContent() {
               transition={{ duration: 0.6 }}
             >
               <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
-                Nosso <span className="text-[#D4A853]">Estoque</span>
+                Nosso <span className="text-[#ddb963]">Estoque</span>
               </h1>
               <p className="text-white text-lg">
                 Veículos seminovos, usados e zero km com procedência garantida
@@ -98,7 +98,7 @@ function EstoqueContent() {
                   value={searchTerm}
                   onChange={(e) => setSearchTerm(e.target.value)}
                   placeholder="Marca ou modelo..."
-                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none"
                 />
               </div>
               
@@ -107,7 +107,7 @@ function EstoqueContent() {
                 <select
                   value={selectedBrand}
                   onChange={(e) => setSelectedBrand(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none cursor-pointer"
                 >
                   {brands.map(brand => (
                     <option key={brand} value={brand}>{brand}</option>
@@ -120,7 +120,7 @@ function EstoqueContent() {
                 <select
                   value={selectedYear}
                   onChange={(e) => setSelectedYear(e.target.value)}
-                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none cursor-pointer"
+                  className="w-full px-4 py-3 bg-white border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none cursor-pointer"
                 >
                   {years.map(year => (
                     <option key={year} value={year}>{year}</option>
@@ -131,7 +131,7 @@ function EstoqueContent() {
               <div className="flex items-end">
                 <div className="text-center w-full">
                   <p className="text-sm text-gray-600 mb-2">Veículos encontrados</p>
-                  <p className="text-3xl font-bold text-[#0F5FA8]">{filteredVehicles.length}</p>
+                  <p className="text-3xl font-bold text-[#004c97]">{filteredVehicles.length}</p>
                 </div>
               </div>
             </div>
@@ -158,7 +158,7 @@ function EstoqueContent() {
                   className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100"
                 >
                   {/* Image Placeholder */}
-                  <div className="relative h-56 bg-gradient-to-br from-[#0F5FA8] to-[#0a4580] flex items-center justify-center">
+                  <div className="relative h-56 bg-gradient-to-br from-[#004c97] to-[#003366] flex items-center justify-center">
                     <div className="text-white text-center">
                       <p className="text-3xl font-bold">{vehicle.brand}</p>
                       <p className="text-lg">{vehicle.model}</p>
@@ -167,7 +167,7 @@ function EstoqueContent() {
 
                   {/* Content */}
                   <div className="p-6">
-                    <h3 className="text-2xl font-bold text-[#0F5FA8] mb-4">
+                    <h3 className="text-2xl font-bold text-[#004c97] mb-4">
                       {vehicle.brand} {vehicle.model}
                     </h3>
 
@@ -193,7 +193,7 @@ function EstoqueContent() {
                     <div className="flex items-center justify-between mb-4">
                       <div>
                         <p className="text-sm text-gray-500">Preço</p>
-                        <p className="text-3xl font-bold text-[#D4A853]">
+                        <p className="text-3xl font-bold text-[#ddb963]">
                           {vehicle.price}
                         </p>
                       </div>
@@ -214,7 +214,7 @@ function EstoqueContent() {
 
                     <button
                       onClick={() => setSelectedVehicle(vehicle)}
-                      className="w-full bg-[#0F5FA8] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#0a4580] transition-colors cursor-pointer text-sm"
+                      className="w-full bg-[#004c97] text-white px-4 py-2 rounded-lg font-semibold hover:bg-[#003366] transition-colors cursor-pointer text-sm"
                     >
                       Ver Detalhes
                     </button>
@@ -254,7 +254,7 @@ function EstoqueContent() {
             >
               {/* Header */}
               <div className="sticky top-0 bg-white border-b border-gray-200 p-6 flex items-center justify-between z-10">
-                <h2 className="text-3xl font-bold text-[#0F5FA8]">
+                <h2 className="text-3xl font-bold text-[#004c97]">
                   {selectedVehicle.brand} {selectedVehicle.model}
                 </h2>
                 <button
@@ -269,7 +269,7 @@ function EstoqueContent() {
               <div className="p-6">
                 {/* Images */}
                 <div className="mb-6">
-                  <div className="h-96 bg-gradient-to-br from-[#0F5FA8] to-[#0a4580] rounded-xl flex items-center justify-center mb-4">
+                  <div className="h-96 bg-gradient-to-br from-[#004c97] to-[#003366] rounded-xl flex items-center justify-center mb-4">
                     <div className="text-white text-center">
                       <p className="text-5xl font-bold">{selectedVehicle.brand}</p>
                       <p className="text-2xl">{selectedVehicle.model}</p>
@@ -278,16 +278,16 @@ function EstoqueContent() {
                 </div>
 
                 {/* Price */}
-                <div className="bg-[#D4A853]/10 p-6 rounded-xl mb-6">
+                <div className="bg-[#ddb963]/10 p-6 rounded-xl mb-6">
                   <p className="text-sm text-gray-600 mb-1">Preço</p>
-                  <p className="text-5xl font-bold text-[#D4A853]">{selectedVehicle.price}</p>
+                  <p className="text-5xl font-bold text-[#ddb963]">{selectedVehicle.price}</p>
                 </div>
 
                 {/* Specs */}
                 <div className="grid md:grid-cols-2 gap-4 mb-6">
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <div className="flex items-center gap-3 mb-2">
-                      <Calendar className="text-[#0F5FA8]" size={24} />
+                      <Calendar className="text-[#004c97]" size={24} />
                       <div>
                         <p className="text-sm text-gray-500">Ano</p>
                         <p className="font-bold text-gray-800">{selectedVehicle.year}</p>
@@ -296,7 +296,7 @@ function EstoqueContent() {
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <div className="flex items-center gap-3 mb-2">
-                      <Gauge className="text-[#0F5FA8]" size={24} />
+                      <Gauge className="text-[#004c97]" size={24} />
                       <div>
                         <p className="text-sm text-gray-500">Quilometragem</p>
                         <p className="font-bold text-gray-800">{selectedVehicle.km} km</p>
@@ -305,7 +305,7 @@ function EstoqueContent() {
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <div className="flex items-center gap-3 mb-2">
-                      <Fuel className="text-[#0F5FA8]" size={24} />
+                      <Fuel className="text-[#004c97]" size={24} />
                       <div>
                         <p className="text-sm text-gray-500">Combustível</p>
                         <p className="font-bold text-gray-800">{selectedVehicle.fuel}</p>
@@ -314,7 +314,7 @@ function EstoqueContent() {
                   </div>
                   <div className="bg-gray-50 p-4 rounded-lg">
                     <div className="flex items-center gap-3 mb-2">
-                      <Settings className="text-[#0F5FA8]" size={24} />
+                      <Settings className="text-[#004c97]" size={24} />
                       <div>
                         <p className="text-sm text-gray-500">Câmbio</p>
                         <p className="font-bold text-gray-800">{selectedVehicle.transmission}</p>
@@ -325,17 +325,17 @@ function EstoqueContent() {
 
                 {/* Description */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-[#0F5FA8] mb-3">Descrição</h3>
+                  <h3 className="text-2xl font-bold text-[#004c97] mb-3">Descrição</h3>
                   <p className="text-gray-700 leading-relaxed">{selectedVehicle.description}</p>
                 </div>
 
                 {/* Features */}
                 <div className="mb-6">
-                  <h3 className="text-2xl font-bold text-[#0F5FA8] mb-3">Equipamentos</h3>
+                  <h3 className="text-2xl font-bold text-[#004c97] mb-3">Equipamentos</h3>
                   <div className="grid md:grid-cols-2 gap-3">
                     {selectedVehicle.features.map((feature, index) => (
                       <div key={index} className="flex items-center gap-2 text-gray-700">
-                        <div className="w-2 h-2 bg-[#D4A853] rounded-full" />
+                        <div className="w-2 h-2 bg-[#ddb963] rounded-full" />
                         <span>{feature}</span>
                       </div>
                     ))}

@@ -23,7 +23,7 @@ export default function Contact() {
     const formDataToSend = new FormData(form);
     
     try {
-      await fetch("https://formsubmit.co/gustavocortezdebrito@gmail.com", {
+      await fetch("https://formsubmit.co/Adm.saabmultimarcas@gmail.com", {
         method: "POST",
         body: formDataToSend,
       });
@@ -66,9 +66,9 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4"
+            className="text-4xl md:text-5xl font-bold text-[#004c97] mb-4"
           >
-            Entre em <span className="text-[#D4A853]">Contato</span>
+            Entre em <span className="text-[#ddb963]">Contato</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -86,7 +86,7 @@ export default function Contact() {
             animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
             transition={{ duration: 0.8, delay: 0.6 }}
           >
-            <h3 className="text-2xl font-bold text-[#0F5FA8] mb-8">Fale Conosco</h3>
+            <h3 className="text-2xl font-bold text-[#004c97] mb-8">Fale Conosco</h3>
             <div className="space-y-6">
               <motion.div 
                 whileHover={{ x: 8, scale: 1.02 }}
@@ -94,7 +94,7 @@ export default function Contact() {
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
                 <motion.div 
-                  className="bg-[#D4A853] p-3 rounded-lg"
+                  className="bg-[#ddb963] p-3 rounded-lg"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
@@ -102,7 +102,7 @@ export default function Contact() {
                 </motion.div>
                 <div>
                   <p className="text-sm text-gray-500">Telefone</p>
-                  <a href="tel:+5518997251860" className="text-[#0F5FA8] font-semibold hover:text-[#D4A853] transition-colors cursor-pointer">
+                  <a href="tel:+5518997251860" className="text-[#004c97] font-semibold hover:text-[#ddb963] transition-colors cursor-pointer">
                     (18) 99725-1860
                   </a>
                 </div>
@@ -114,7 +114,7 @@ export default function Contact() {
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
                 <motion.div 
-                  className="bg-[#D4A853] p-3 rounded-lg"
+                  className="bg-[#ddb963] p-3 rounded-lg"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
@@ -122,7 +122,7 @@ export default function Contact() {
                 </motion.div>
                 <div>
                   <p className="text-sm text-gray-500">WhatsApp</p>
-                  <a href="https://wa.me/5518997251860" target="_blank" rel="noopener noreferrer" className="text-[#0F5FA8] font-semibold hover:text-[#D4A853] transition-colors cursor-pointer">
+                  <a href="https://wa.me/5518997251860" target="_blank" rel="noopener noreferrer" className="text-[#004c97] font-semibold hover:text-[#ddb963] transition-colors cursor-pointer">
                     (18) 99725-1860
                   </a>
                 </div>
@@ -134,7 +134,7 @@ export default function Contact() {
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
                 <motion.div 
-                  className="bg-[#D4A853] p-3 rounded-lg"
+                  className="bg-[#ddb963] p-3 rounded-lg"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
@@ -142,8 +142,8 @@ export default function Contact() {
                 </motion.div>
                 <div>
                   <p className="text-sm text-gray-500">E-mail</p>
-                  <a href="mailto:contato@saabmultimarcas.com.br" className="text-[#0F5FA8] font-semibold hover:text-[#D4A853] transition-colors cursor-pointer">
-                    contato@saabmultimarcas.com.br
+                  <a href="mailto:Adm.saabmultimarcas@gmail.com" className="text-[#004c97] font-semibold hover:text-[#ddb963] transition-colors cursor-pointer">
+                    Adm.saabmultimarcas@gmail.com
                   </a>
                 </div>
               </motion.div>
@@ -154,7 +154,7 @@ export default function Contact() {
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
                 <motion.div 
-                  className="bg-[#D4A853] p-3 rounded-lg"
+                  className="bg-[#ddb963] p-3 rounded-lg"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
@@ -166,7 +166,7 @@ export default function Contact() {
                     href="https://maps.google.com/?q=Av.+Joaquim+Constantino,+1868+-+Vila+Formosa,+Pres.+Prudente+-+SP,+19050-220" 
                     target="_blank" 
                     rel="noopener noreferrer"
-                    className="text-[#0F5FA8] font-semibold hover:text-[#D4A853] transition-colors cursor-pointer"
+                    className="text-[#004c97] font-semibold hover:text-[#ddb963] transition-colors cursor-pointer"
                   >
                     Av. Joaquim Constantino, 1868<br />
                     Vila Formosa - Pres. Prudente/SP
@@ -180,7 +180,7 @@ export default function Contact() {
                 className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
               >
                 <motion.div 
-                  className="bg-[#D4A853] p-3 rounded-lg"
+                  className="bg-[#ddb963] p-3 rounded-lg"
                   whileHover={{ rotate: 360 }}
                   transition={{ duration: 0.5 }}
                 >
@@ -190,7 +190,7 @@ export default function Contact() {
                 </motion.div>
                 <div>
                   <p className="text-sm text-gray-500">Horário</p>
-                  <span className="text-[#0F5FA8] font-semibold">
+                  <span className="text-[#004c97] font-semibold">
                     Seg-Sex: 08:00-18:00<br />
                     Sáb: 08:00-12:00
                   </span>
@@ -205,7 +205,7 @@ export default function Contact() {
             transition={{ duration: 0.8, delay: 0.8 }}
             className="bg-white p-8 rounded-2xl shadow-lg"
           >
-            <h3 className="text-2xl font-bold text-[#0F5FA8] mb-6">Envie uma Mensagem</h3>
+            <h3 className="text-2xl font-bold text-[#004c97] mb-6">Envie uma Mensagem</h3>
             <form onSubmit={handleSubmit} className="space-y-4">
               {/* FormSubmit Configuration */}
               <input type="hidden" name="_subject" value="Nova mensagem do site SAAB Multimarcas" />
@@ -220,7 +220,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Seu Nome"
                 required
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none transition-colors"
               />
               <input
                 type="email"
@@ -229,7 +229,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Seu E-mail"
                 required
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none transition-colors"
               />
               <input
                 type="tel"
@@ -238,7 +238,7 @@ export default function Contact() {
                 onChange={handleChange}
                 placeholder="Seu Telefone"
                 required
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none transition-colors"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none transition-colors"
               />
               <textarea
                 name="mensagem"
@@ -247,13 +247,13 @@ export default function Contact() {
                 placeholder="Sua Mensagem"
                 rows={4}
                 required
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#D4A853] focus:outline-none transition-colors resize-none"
+                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none transition-colors resize-none"
               />
               <motion.button
                 type="submit"
                 whileHover={{ scale: 1.02 }}
                 whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-[#D4A853] to-[#f4d084] text-white py-4 rounded-lg font-semibold hover:shadow-lg transition-shadow cursor-pointer flex items-center justify-center gap-2"
+                className="w-full bg-gradient-to-r from-[#ddb963] to-[#e8c77d] text-white py-4 rounded-lg font-semibold hover:shadow-lg transition-shadow cursor-pointer flex items-center justify-center gap-2"
               >
                 <MessageCircle size={20} />
                 Enviar para Email e WhatsApp

@@ -37,7 +37,7 @@ export default function ParticlesBackground() {
             distance: 140, 
             links: { 
               opacity: 0.8,
-              color: "#D4A853"
+              color: "#ddb963"
             } 
           },
           push: { quantity: 3 },
@@ -52,11 +52,11 @@ export default function ParticlesBackground() {
           } 
         },
         color: { 
-          value: ["#D4A853", "#ffffff", "#f4d084"] 
+          value: ["#ddb963", "#ffffff", "#e8c77d"] 
         },
         links: {
           enable: true,
-          color: "#D4A853",
+          color: "#ddb963",
           distance: 150,
           opacity: 0.3,
           width: 1,

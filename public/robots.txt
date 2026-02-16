@@ -1,0 +1,8 @@
+# robots.txt para SAAB Multimarcas
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /api/
+
+# Sitemap
+Sitemap: https://saabmultimarcas.com.br/sitemap.xml

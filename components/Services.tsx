@@ -55,9 +55,9 @@ export default function Services() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4"
+            className="text-4xl md:text-5xl font-bold text-[#004c97] mb-4"
           >
-            Nossos <span className="text-[#D4A853]">Serviços</span>
+            Nossos <span className="text-[#ddb963]">Serviços</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -77,16 +77,16 @@ export default function Services() {
               animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 60, scale: 0.9 }}
               transition={{ delay: 0.6 + (index * 0.1), duration: 0.6, type: "spring", stiffness: 100 }}
               whileHover={{ y: -8, scale: 1.02 }}
-              className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-[#D4A853] hover:shadow-lg transition-all group"
+              className="bg-gray-50 p-8 rounded-2xl border border-gray-200 hover:border-[#ddb963] hover:shadow-lg transition-all group"
             >
               <motion.div 
-                className="text-[#D4A853] mb-4"
+                className="text-[#ddb963] mb-4"
                 whileHover={{ scale: 1.1, rotate: 5 }}
                 transition={{ type: "spring", stiffness: 300 }}
               >
                 {service.icon}
               </motion.div>
-              <h3 className="text-xl font-bold text-[#0F5FA8] mb-3 group-hover:text-[#D4A853] transition-colors">{service.title}</h3>
+              <h3 className="text-xl font-bold text-[#004c97] mb-3 group-hover:text-[#ddb963] transition-colors">{service.title}</h3>
               <p className="text-gray-600 text-sm leading-relaxed">{service.description}</p>
             </motion.div>
           ))}

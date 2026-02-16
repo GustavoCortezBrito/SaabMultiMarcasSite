@@ -126,7 +126,7 @@ export default function AdminDashboard() {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      <header className="bg-[#0F5FA8] shadow-lg">
+      <header className="bg-[#004c97] shadow-lg">
         <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
           <Logo size="sm" />
           <div className="flex items-center gap-4">
@@ -144,14 +144,14 @@ export default function AdminDashboard() {
 
       <main className="max-w-7xl mx-auto px-4 py-8">
         <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-[#0F5FA8]">
+          <h1 className="text-3xl font-bold text-[#004c97]">
             Gerenciar Veículos
           </h1>
           <motion.button
             onClick={handleAddVehicle}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 bg-[#D4A853] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#c49843] transition-colors cursor-pointer"
+            className="flex items-center gap-2 bg-[#ddb963] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#c9a855] transition-colors cursor-pointer"
           >
             <Plus size={20} />
             Adicionar Veículo
@@ -172,7 +172,7 @@ export default function AdminDashboard() {
                 className="bg-white rounded-xl shadow-md p-6 flex items-center justify-between"
               >
                 <div className="flex-1">
-                  <h3 className="text-xl font-bold text-[#0F5FA8] mb-2">
+                  <h3 className="text-xl font-bold text-[#004c97] mb-2">
                     {vehicle.brand} {vehicle.model}
                   </h3>
                   <div className="grid grid-cols-4 gap-4 text-sm text-gray-600">
@@ -219,7 +219,7 @@ export default function AdminDashboard() {
             className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-8"
           >
             <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-[#0F5FA8]">
+              <h2 className="text-2xl font-bold text-[#004c97]">
                 {vehicles.find(v => v.id === editingVehicle.id) ? "Editar" : "Adicionar"} Veículo
               </h2>
               <button
@@ -240,7 +240,7 @@ export default function AdminDashboard() {
                   type="text"
                   value={editingVehicle.brand}
                   onChange={(e) => setEditingVehicle({ ...editingVehicle, brand: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
                 />
               </div>
               <div>
@@ -249,7 +249,7 @@ export default function AdminDashboard() {
                   type="text"
                   value={editingVehicle.model}
                   onChange={(e) => setEditingVehicle({ ...editingVehicle, model: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
                 />
               </div>
               <div>
@@ -258,7 +258,7 @@ export default function AdminDashboard() {
                   type="text"
                   value={editingVehicle.year}
                   onChange={(e) => setEditingVehicle({ ...editingVehicle, year: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
                 />
               </div>
               <div>
@@ -267,7 +267,7 @@ export default function AdminDashboard() {
                   type="text"
                   value={editingVehicle.km}
                   onChange={(e) => setEditingVehicle({ ...editingVehicle, km: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
                 />
               </div>
               <div>
@@ -276,7 +276,7 @@ export default function AdminDashboard() {
                   type="text"
                   value={editingVehicle.price}
                   onChange={(e) => setEditingVehicle({ ...editingVehicle, price: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
                 />
               </div>
               <div>
@@ -284,7 +284,7 @@ export default function AdminDashboard() {
                 <select
                   value={editingVehicle.fuel}
                   onChange={(e) => setEditingVehicle({ ...editingVehicle, fuel: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none cursor-pointer"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none cursor-pointer"
                 >
                   <option value="Flex">Flex</option>
                   <option value="Gasolina">Gasolina</option>
@@ -298,7 +298,7 @@ export default function AdminDashboard() {
                 <select
                   value={editingVehicle.transmission}
                   onChange={(e) => setEditingVehicle({ ...editingVehicle, transmission: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none cursor-pointer"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none cursor-pointer"
                 >
                   <option value="Manual">Manual</option>
                   <option value="Automático">Automático</option>
@@ -310,7 +310,7 @@ export default function AdminDashboard() {
                   type="text"
                   value={editingVehicle.color}
                   onChange={(e) => setEditingVehicle({ ...editingVehicle, color: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
                 />
               </div>
             </div>
@@ -321,7 +321,7 @@ export default function AdminDashboard() {
                 value={editingVehicle.description}
                 onChange={(e) => setEditingVehicle({ ...editingVehicle, description: e.target.value })}
                 rows={4}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
               />
             </div>
 
@@ -334,11 +334,11 @@ export default function AdminDashboard() {
                   onChange={(e) => setNewFeature(e.target.value)}
                   onKeyPress={(e) => e.key === 'Enter' && handleAddFeature()}
                   placeholder="Digite um equipamento..."
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:border-[#D4A853] focus:outline-none"
+                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
                 />
                 <button
                   onClick={handleAddFeature}
-                  className="px-4 py-2 bg-[#D4A853] text-white rounded-lg hover:bg-[#c49843] transition-colors cursor-pointer"
+                  className="px-4 py-2 bg-[#ddb963] text-white rounded-lg hover:bg-[#c9a855] transition-colors cursor-pointer"
                 >
                   Adicionar
                 </button>
@@ -373,7 +373,7 @@ export default function AdminDashboard() {
               </button>
               <button
                 onClick={handleSaveEdit}
-                className="px-6 py-3 bg-[#0F5FA8] text-white rounded-lg font-semibold hover:bg-[#0a4580] transition-colors cursor-pointer"
+                className="px-6 py-3 bg-[#004c97] text-white rounded-lg font-semibold hover:bg-[#003366] transition-colors cursor-pointer"
               >
                 Salvar
               </button>

@@ -37,9 +37,9 @@ export default function VehicleGrid() {
             initial={{ opacity: 0, scale: 0.9 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-[#0F5FA8] mb-4"
+            className="text-4xl md:text-5xl font-bold text-[#004c97] mb-4"
           >
-            Veículos em <span className="text-[#D4A853]">Destaque</span>
+            Veículos em <span className="text-[#ddb963]">Destaque</span>
           </motion.h2>
           <motion.p 
             initial={{ opacity: 0 }}
@@ -62,7 +62,7 @@ export default function VehicleGrid() {
               className="bg-white rounded-2xl overflow-hidden shadow-lg hover:shadow-2xl transition-all border border-gray-100 group"
             >
               {/* Image Placeholder */}
-              <div className="relative h-56 bg-gradient-to-br from-[#0F5FA8] to-[#0a4580] flex items-center justify-center overflow-hidden">
+              <div className="relative h-56 bg-gradient-to-br from-[#004c97] to-[#003366] flex items-center justify-center overflow-hidden">
                 <motion.div 
                   className="text-white text-center"
                   whileHover={{ scale: 1.1 }}
@@ -72,7 +72,7 @@ export default function VehicleGrid() {
                   <p className="text-lg">{vehicle.model}</p>
                 </motion.div>
                 <motion.div
-                  className="absolute inset-0 bg-[#D4A853] opacity-0 group-hover:opacity-20"
+                  className="absolute inset-0 bg-[#ddb963] opacity-0 group-hover:opacity-20"
                   initial={{ scale: 0 }}
                   whileHover={{ scale: 1 }}
                   transition={{ duration: 0.3 }}
@@ -81,7 +81,7 @@ export default function VehicleGrid() {
 
               {/* Content */}
               <div className="p-6">
-                <h3 className="text-2xl font-bold text-[#0F5FA8] mb-4">
+                <h3 className="text-2xl font-bold text-[#004c97] mb-4">
                   {vehicle.brand} {vehicle.model}
                 </h3>
 
@@ -97,13 +97,13 @@ export default function VehicleGrid() {
                 </div>
 
                 <div className="flex items-center justify-between">
-                  <p className="text-3xl font-bold text-[#D4A853]">
+                  <p className="text-3xl font-bold text-[#ddb963]">
                     {vehicle.price}
                   </p>
                   <motion.button
                     whileHover={{ scale: 1.05 }}
                     whileTap={{ scale: 0.95 }}
-                    className="bg-[#0F5FA8] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#0a4580] transition-colors cursor-pointer"
+                    className="bg-[#004c97] text-white px-4 py-2 rounded-lg flex items-center gap-2 hover:bg-[#003366] transition-colors cursor-pointer"
                   >
                     Ver mais
                     <ArrowRight size={18} />
@@ -127,7 +127,7 @@ export default function VehicleGrid() {
             transition={{ delay: 1.8, duration: 0.5 }}
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
-            className="inline-block bg-gradient-to-r from-[#D4A853] to-[#f4d084] text-[#0F5FA8] px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-shadow cursor-pointer"
+            className="inline-block bg-gradient-to-r from-[#ddb963] to-[#e8c77d] text-[#004c97] px-8 py-4 rounded-full text-lg font-semibold hover:shadow-xl transition-shadow cursor-pointer"
           >
             Ver Estoque Completo
           </motion.a>
