@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, AnimatePresence } from "framer-motion";
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,7 +10,7 @@ import { Calendar, Gauge, Fuel, Settings, ArrowLeft, MessageCircle, X } from "lu
 import Link from "next/link";
 import { vehicleAPI, Vehicle } from "@/lib/api";
 
-export default function EstoquePage() {
+function EstoqueContent() {
   const searchParams = useSearchParams();
   const [selectedBrand, setSelectedBrand] = useState("Todas");
   const [selectedYear, setSelectedYear] = useState("Todos");
@@ -361,5 +361,17 @@ export default function EstoquePage() {
       <Footer />
       <WhatsAppButton />
     </>
+  );
+}
+
+export default function EstoquePage() {
+  return (
+    <Suspense fallback={
+      <div className="min-h-screen flex items-center justify-center">
+        <p className="text-2xl text-gray-400">Carregando...</p>
+      </div>
+    }>
+      <EstoqueContent />
+    </Suspense>
   );
 }
