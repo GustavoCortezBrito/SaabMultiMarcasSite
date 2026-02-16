@@ -101,7 +101,7 @@ export default function MapLocation() {
             className="bg-white rounded-2xl overflow-hidden shadow-lg"
           >
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3695.8947234567!2d-51.4089!3d-22.1234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMjLCsDA3JzI0LjIiUyA1McKwMjQnMzIuMCJX!5e0!3m2!1spt-BR!2sbr!4v1234567890!5m2!1spt-BR!2sbr&q=Av.+Joaquim+Constantino,+1868+-+Vila+Formosa,+Pres.+Prudente+-+SP"
+              src="https://www.google.com/maps?q=Av.+Joaquim+Constantino,+1868,+Vila+Formosa,+Presidente+Prudente,+SP,+19050-220&output=embed"
               width="100%"
               height="100%"
               style={{ border: 0, minHeight: '500px' }}
