@@ -11,48 +11,59 @@ body {
   font-family: Arial, Helvetica, sans-serif;
 }
 
-/* WhatsApp Widget Custom Styles */
-.rww-widget-button {
+/* WhatsApp Widget Custom Styles - Force Green */
+/* Target all possible selectors */
+.rww-widget-button,
+.rww-widget-button *,
+button[class*="rww"],
+button[class*="widget"],
+div[class*="rww-widget-button"],
+div[class*="rww"] > button,
+[class*="whatsapp"] button,
+.rww-widget-button > *,
+.rww-widget-button::before,
+.rww-widget-button::after {
   background-color: #25D366 !important;
   background: #25D366 !important;
-  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4) !important;
-  cursor: pointer !important;
+  background-image: none !important;
 }
 
-.rww-widget-button:hover {
+.rww-widget-button {
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4) !important;
+  cursor: pointer !important;
+  border: none !important;
+}
+
+.rww-widget-button:hover,
+.rww-widget-button:hover * {
   background-color: #20BA5A !important;
   background: #20BA5A !important;
   transform: scale(1.1) !important;
   cursor: pointer !important;
 }
 
-.rww-widget-button svg {
+.rww-widget-button svg,
+.rww-widget-button svg path {
   color: white !important;
   fill: white !important;
+  stroke: white !important;
 }
 
-/* Force green background on all button states */
-.rww-widget-button,
+/* Force green on all states */
 .rww-widget-button:active,
 .rww-widget-button:focus,
 .rww-widget-button:visited,
-.rww-widget-button > div,
-.rww-widget-button span {
+.rww-widget-button:active *,
+.rww-widget-button:focus *,
+.rww-widget-button:visited * {
   background-color: #25D366 !important;
   background: #25D366 !important;
 }
 
-/* Target the button container with more specificity */
-div[class*="rww"] button,
-div[class*="widget"] button,
-button[class*="rww"],
-button[class*="widget"] {
-  background-color: #25D366 !important;
-  background: #25D366 !important;
-}
-
-/* Override any inline styles */
-[style*="background"] {
+/* Override any inline styles with attribute selector */
+button[style],
+div[style*="background"],
+[class*="rww"][style] {
   background-color: #25D366 !important;
   background: #25D366 !important;
 }
