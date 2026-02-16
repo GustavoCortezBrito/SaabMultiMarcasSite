@@ -8,7 +8,7 @@ import { ChevronDown } from "lucide-react";
 export default function FAQ() {
   const ref = useRef(null);
   const isInView = useInView(ref, { once: true });
-  const [openIndex, setOpenIndex] = useState<number | null>(0);
+  const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
     {
