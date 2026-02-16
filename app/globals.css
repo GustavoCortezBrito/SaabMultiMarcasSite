@@ -14,12 +14,14 @@ body {
 /* WhatsApp Widget Custom Styles */
 .rww-widget-button {
   background-color: #25D366 !important;
+  background: #25D366 !important;
   box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4) !important;
   cursor: pointer !important;
 }
 
 .rww-widget-button:hover {
   background-color: #20BA5A !important;
+  background: #20BA5A !important;
   transform: scale(1.1) !important;
   cursor: pointer !important;
 }
@@ -37,12 +39,22 @@ body {
 .rww-widget-button > div,
 .rww-widget-button span {
   background-color: #25D366 !important;
+  background: #25D366 !important;
 }
 
-/* Target the button container */
+/* Target the button container with more specificity */
 div[class*="rww"] button,
-div[class*="widget"] button {
+div[class*="widget"] button,
+button[class*="rww"],
+button[class*="widget"] {
   background-color: #25D366 !important;
+  background: #25D366 !important;
+}
+
+/* Override any inline styles */
+[style*="background"] {
+  background-color: #25D366 !important;
+  background: #25D366 !important;
 }
 
 .rww-widget-header {
