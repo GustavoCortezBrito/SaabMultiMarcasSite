@@ -1,11 +1,9 @@
-import { DefaultSeoProps } from 'next-seo';
-
-const config: DefaultSeoProps = {
+const config = {
   title: 'Saab Multimarcas - Veículos de Qualidade',
   description: 'A Saab Multimarcas oferece os melhores veículos seminovos e usados com qualidade garantida. Trabalhamos com as melhores marcas parceiras do mercado.',
   canonical: 'https://saabmultimarcas.com.br',
   openGraph: {
-    type: 'website',
+    type: 'website' as const,
     locale: 'pt_BR',
     url: 'https://saabmultimarcas.com.br',
     siteName: 'Saab Multimarcas',
@@ -23,7 +21,7 @@ const config: DefaultSeoProps = {
   twitter: {
     handle: '@saabmultimarcas',
     site: '@saabmultimarcas',
-    cardType: 'summary_large_image',
+    cardType: 'summary_large_image' as const,
   },
   additionalMetaTags: [
     {
