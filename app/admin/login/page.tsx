@@ -3,8 +3,9 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import Link from "next/link";
 import Logo from "@/components/Logo";
-import { Lock, User, Eye, EyeOff } from "lucide-react";
+import { Lock, User, Eye, EyeOff, ArrowLeft } from "lucide-react";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -32,6 +33,21 @@ export default function AdminLogin() {
 
   return (
     <div className="min-h-screen bg-[#004c97] relative overflow-hidden flex items-center justify-center p-4">
+      {/* Botão Voltar */}
+      <Link href="/">
+        <motion.button
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.5 }}
+          whileHover={{ scale: 1.05, x: -5 }}
+          whileTap={{ scale: 0.95 }}
+          className="fixed top-6 left-6 z-50 flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg hover:bg-white/20 transition-all cursor-pointer"
+        >
+          <ArrowLeft size={20} />
+          <span className="font-semibold">Voltar</span>
+        </motion.button>
+      </Link>
+
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-5">
         <div className="absolute inset-0" style={{
@@ -156,24 +172,6 @@ export default function AdminLogin() {
                 )}
               </motion.button>
             </form>
-
-            {/* Info de Credenciais (remover em produção) */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: 0.6, duration: 0.5 }}
-              className="mt-8 pt-6 border-t border-gray-200"
-            >
-              <p className="text-xs text-gray-500 text-center mb-2">Credenciais de teste:</p>
-              <div className="bg-gray-50 rounded-lg p-3 text-center">
-                <p className="text-sm font-mono text-gray-700">
-                  <span className="font-semibold">Usuário:</span> admin
-                </p>
-                <p className="text-sm font-mono text-gray-700">
-                  <span className="font-semibold">Senha:</span> saab2026
-                </p>
-              </div>
-            </motion.div>
           </div>
         </div>
 

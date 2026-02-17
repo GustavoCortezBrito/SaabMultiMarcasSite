@@ -2,8 +2,9 @@
 
 import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
-import { Menu, X, Phone } from "lucide-react";
+import { Menu, X, Phone, Shield } from "lucide-react";
 import Logo from "./Logo";
+import Link from "next/link";
 
 export default function Header() {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -86,6 +87,18 @@ export default function Header() {
             >
               Fale Conosco
             </motion.a>
+            
+            {/* Admin Access Icon */}
+            <Link href="/admin/login">
+              <motion.div
+                whileHover={{ scale: 1.1, rotate: 5 }}
+                whileTap={{ scale: 0.95 }}
+                className="p-2 rounded-lg hover:bg-white/10 transition-colors cursor-pointer group"
+                title="Acesso Administrativo"
+              >
+                <Shield size={20} className="text-white/60 group-hover:text-[#ddb963] transition-colors" />
+              </motion.div>
+            </Link>
           </div>
 
           {/* Mobile Menu Button */}
@@ -133,6 +146,14 @@ export default function Header() {
               >
                 Fale Conosco
               </a>
+              <Link
+                href="/admin/login"
+                onClick={() => setIsMobileMenuOpen(false)}
+                className="flex items-center justify-center gap-2 text-white/60 hover:text-[#ddb963] transition-colors py-2"
+              >
+                <Shield size={18} />
+                <span className="text-sm">Acesso Admin</span>
+              </Link>
             </div>
           </nav>
         </motion.div>
