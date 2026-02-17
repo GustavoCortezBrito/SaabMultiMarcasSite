@@ -44,10 +44,16 @@ export const metadata: Metadata = {
     type: "website",
     images: [
       {
-        url: "/saab-logo.png",
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
-        alt: "SAAB Multimarcas - Revenda de Veículos",
+        alt: "SAAB Multimarcas - Revenda de Veículos em Presidente Prudente",
+      },
+      {
+        url: "/saab-fachada.jpeg",
+        width: 1200,
+        height: 630,
+        alt: "SAAB Multimarcas - Fachada",
       },
     ],
   },
@@ -55,7 +61,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "SAAB Multimarcas - Veículos Seminovos, Usados e Zero KM",
     description: "Revenda de veículos em Presidente Prudente com financiamento facilitado.",
-    images: ["/saab-logo.png"],
+    images: ["/og-image.jpg"],
   },
   robots: {
     index: true,
