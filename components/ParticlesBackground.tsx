@@ -3,7 +3,7 @@
 import { useEffect, useState, useMemo } from "react";
 import Particles from "@tsparticles/react";
 import { loadSlim } from "@tsparticles/slim";
-import type { OutMode } from "@tsparticles/engine";
+import type { OutMode, MoveDirection } from "@tsparticles/engine";
 
 export default function ParticlesBackground() {
   const [init, setInit] = useState(false);
@@ -64,7 +64,7 @@ export default function ParticlesBackground() {
         move: { 
           enable: true, 
           speed: 1.5, 
-          direction: "none",
+          direction: "none" as MoveDirection,
           random: true,
           straight: false,
           outModes: { 
