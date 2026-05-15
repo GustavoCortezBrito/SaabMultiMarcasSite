@@ -1,13 +1,13 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, HelpCircle, MessageSquare } from "lucide-react";
 
 export default function FAQ() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [openIndex, setOpenIndex] = useState<number | null>(null);
 
   const faqs = [
@@ -50,100 +50,105 @@ export default function FAQ() {
   };
 
   return (
-    <section ref={ref} className="py-20 px-4 bg-white" id="faq">
+    <section ref={ref} className="py-24 px-6 bg-surface relative overflow-hidden" id="faq">
+      <div className="absolute top-1/2 left-0 w-64 h-64 bg-accent/5 blur-[100px] rounded-full -z-10" />
+      
       <div className="max-w-4xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <motion.h2 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-[#004c97] mb-4"
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-primary/5 text-primary text-[10px] font-black uppercase tracking-[0.2em] mb-6 border border-primary/10"
           >
-            Perguntas <span className="text-[#ddb963]">Frequentes</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-gray-600 text-lg"
-          >
-            Tire suas dúvidas sobre compra, financiamento e documentação
-          </motion.p>
+            <HelpCircle size={14} className="text-accent" />
+            <span>Suporte ao Cliente</span>
+          </motion.div>
+
+          <h2 className="text-4xl md:text-6xl font-black text-primary mb-6 tracking-tight">
+            Dúvidas <span className="text-gradient-gold">Frequentes</span>
+          </h2>
+          <p className="text-slate-500 text-lg font-light leading-relaxed">
+            Tudo o que você precisa saber sobre sua próxima conquista.
+          </p>
         </motion.div>
 
         <div className="space-y-4">
           {faqs.map((faq, index) => (
             <motion.div
               key={index}
-              initial={{ opacity: 0, x: -30 }}
-              animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -30 }}
-              transition={{ delay: 0.6 + (index * 0.08), duration: 0.5 }}
-              whileHover={{ scale: 1.01 }}
-              className="bg-gray-50 rounded-xl overflow-hidden border border-gray-200 hover:border-[#ddb963] transition-colors"
+              initial={{ opacity: 0, y: 20 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ delay: 0.1 * index }}
+              className={`rounded-[2rem] border transition-all duration-500 overflow-hidden ${
+                openIndex === index 
+                  ? "bg-white border-accent shadow-premium" 
+                  : "bg-white/50 border-slate-100 hover:border-accent/30"
+              }`}
             >
               <button
                 onClick={() => toggleFAQ(index)}
-                className="w-full px-6 py-5 flex items-center justify-between text-left hover:bg-gray-100 transition-colors cursor-pointer"
+                className="w-full px-8 py-7 flex items-center justify-between text-left group transition-all"
               >
-                <span className="font-bold text-[#004c97] text-lg pr-4">
+                <span className={`font-bold text-lg transition-colors duration-300 ${
+                  openIndex === index ? "text-accent" : "text-primary group-hover:text-accent"
+                }`}>
                   {faq.question}
                 </span>
-                <motion.div
-                  animate={{ rotate: openIndex === index ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                  className="flex-shrink-0"
-                >
-                  <ChevronDown className="text-[#ddb963]" size={24} />
-                </motion.div>
+                <div className={`w-10 h-10 rounded-xl flex items-center justify-center transition-all duration-500 ${
+                  openIndex === index ? "bg-accent text-white rotate-180" : "bg-slate-50 text-slate-400 group-hover:bg-accent/10 group-hover:text-accent"
+                }`}>
+                  <ChevronDown size={20} />
+                </div>
               </button>
               
-              <motion.div
-                animate={{
-                  height: openIndex === index ? "auto" : 0,
-                  opacity: openIndex === index ? 1 : 0
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="overflow-hidden"
-              >
-                <motion.div 
-                  initial={{ y: -10 }}
-                  animate={{ y: 0 }}
-                  className="px-6 pb-5 text-gray-700 leading-relaxed"
-                >
-                  {faq.answer}
-                </motion.div>
-              </motion.div>
+              <AnimatePresence>
+                {openIndex === index && (
+                  <motion.div
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: "auto", opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.4, ease: "circOut" }}
+                  >
+                    <div className="px-8 pb-8 text-slate-500 leading-relaxed font-light border-t border-slate-50 pt-6">
+                      {faq.answer}
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </motion.div>
           ))}
         </div>
 
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 30 }}
-          transition={{ delay: 1.4, duration: 0.6 }}
-          className="mt-12 text-center"
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.5, duration: 0.6 }}
+          className="mt-20 text-center p-12 rounded-[3rem] bg-primary text-white relative overflow-hidden"
         >
-          <p className="text-gray-600 mb-4">
-            Não encontrou a resposta que procurava?
-          </p>
-          <motion.a
-            href="#contato"
-            initial={{ scale: 0.9 }}
-            animate={isInView ? { scale: 1 } : { scale: 0.9 }}
-            transition={{ delay: 1.6, duration: 0.5 }}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="inline-block bg-[#ddb963] text-[#004c97] px-8 py-3 rounded-lg font-bold hover:bg-[#e8c77d] transition-colors cursor-pointer"
-          >
-            Entre em Contato
-          </motion.a>
+          <div className="absolute top-0 right-0 w-32 h-32 bg-accent/20 blur-3xl" />
+          <div className="relative z-10">
+            <h3 className="text-2xl font-bold mb-4">Ainda tem dúvidas?</h3>
+            <p className="text-slate-400 mb-8 font-light">
+              Nossa equipe está pronta para te atender agora mesmo via WhatsApp.
+            </p>
+            <motion.a
+              href="#contato"
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              className="btn-premium btn-gold inline-flex !px-10 group"
+            >
+              <MessageSquare size={20} className="group-hover:rotate-12 transition-transform" />
+              Falar com Especialista
+            </motion.a>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
+

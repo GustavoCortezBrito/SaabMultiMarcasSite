@@ -5,7 +5,7 @@ import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import Logo from "@/components/Logo";
-import { Lock, User, Eye, EyeOff, ArrowLeft } from "lucide-react";
+import { Lock, User, Eye, EyeOff, ArrowLeft, ShieldCheck } from "lucide-react";
 
 export default function AdminLogin() {
   const router = useRouter();
@@ -19,7 +19,6 @@ export default function AdminLogin() {
     setIsLoading(true);
     setError("");
     
-    // Simula delay de autenticação
     await new Promise(resolve => setTimeout(resolve, 800));
     
     if (credentials.username === "admin" && credentials.password === "saab2026") {
@@ -32,157 +31,171 @@ export default function AdminLogin() {
   };
 
   return (
-    <div className="min-h-screen bg-[#004c97] relative overflow-hidden flex items-center justify-center p-4">
-      {/* Botão Voltar */}
+    <div className="min-h-screen bg-primary relative overflow-hidden flex items-center justify-center p-4">
+      {/* Background Glows */}
+      <div className="absolute top-[-10%] right-[-5%] w-[500px] h-[500px] bg-accent/10 blur-[150px] rounded-full pointer-events-none" />
+      <div className="absolute bottom-[-10%] left-[-5%] w-[400px] h-[400px] bg-blue-500/5 blur-[120px] rounded-full pointer-events-none" />
+
+      {/* Grid Pattern */}
+      <div className="absolute inset-0 opacity-[0.03]" style={{
+        backgroundImage: `linear-gradient(rgba(197,160,89,1) 1px, transparent 1px), linear-gradient(to right, rgba(197,160,89,1) 1px, transparent 1px)`,
+        backgroundSize: "60px 60px"
+      }} />
+
+      {/* Back Button */}
       <Link href="/">
         <motion.button
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.5 }}
-          whileHover={{ scale: 1.05, x: -5 }}
-          whileTap={{ scale: 0.95 }}
-          className="fixed top-6 left-6 z-50 flex items-center gap-2 bg-white/10 backdrop-blur-sm text-white px-4 py-2.5 rounded-lg hover:bg-white/20 transition-all cursor-pointer"
+          whileHover={{ x: -3 }}
+          className="fixed top-8 left-8 z-50 flex items-center gap-2 text-slate-400 hover:text-white transition-colors group"
         >
-          <ArrowLeft size={20} />
-          <span className="font-semibold">Voltar</span>
+          <div className="w-10 h-10 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+            <ArrowLeft size={18} />
+          </div>
+          <span className="text-xs uppercase font-black tracking-widest hidden md:block">Voltar ao Site</span>
         </motion.button>
       </Link>
 
-      {/* Background Pattern */}
-      <div className="absolute inset-0 opacity-5">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='1'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E")`,
-        }}></div>
-      </div>
-
-      {/* Gradient Overlay */}
-      <div className="absolute inset-0 bg-gradient-to-br from-[#004c97] via-[#003366] to-[#062d54]"></div>
-
       <motion.div
-        initial={{ opacity: 0, y: 30 }}
-        animate={{ opacity: 1, y: 0 }}
+        initial={{ opacity: 0, y: 30, scale: 0.97 }}
+        animate={{ opacity: 1, y: 0, scale: 1 }}
         transition={{ duration: 0.7, ease: "easeOut" }}
-        className="relative z-10 w-full max-w-[480px]"
+        className="relative z-10 w-full max-w-[440px]"
       >
-        {/* Card Principal */}
-        <div className="bg-white/95 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden">
-          {/* Header com Logo */}
-          <div className="bg-gradient-to-r from-[#004c97] to-[#003366] px-8 py-10 text-center">
-            <motion.div
-              initial={{ scale: 0.8, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ delay: 0.2, duration: 0.5 }}
-            >
-              <Logo size="lg" className="mb-4" />
-              <h1 className="text-2xl font-bold text-white mb-1">Painel Administrativo</h1>
-              <p className="text-white/80 text-sm">Acesso restrito</p>
-            </motion.div>
-          </div>
+        {/* Logo & Header */}
+        <div className="text-center mb-10">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.6 }}
+            className="flex justify-center mb-8"
+          >
+            <Logo size="md" />
+          </motion.div>
 
-          {/* Form */}
-          <div className="px-8 py-10">
-            <form onSubmit={handleLogin} className="space-y-6">
-              {/* Campo Usuário */}
-              <motion.div
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.3, duration: 0.5 }}
-              >
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Usuário
-                </label>
-                <div className="relative group">
-                  <User className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#ddb963] transition-colors" size={20} />
-                  <input
-                    type="text"
-                    value={credentials.username}
-                    onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
-                    className="w-full pl-12 pr-4 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#ddb963] focus:outline-none transition-all bg-gray-50 focus:bg-white"
-                    placeholder="Digite seu usuário"
-                    required
-                    disabled={isLoading}
-                  />
-                </div>
-              </motion.div>
-
-              {/* Campo Senha */}
-              <motion.div
-                initial={{ x: -20, opacity: 0 }}
-                animate={{ x: 0, opacity: 1 }}
-                transition={{ delay: 0.4, duration: 0.5 }}
-              >
-                <label className="block text-sm font-semibold text-gray-700 mb-2">
-                  Senha
-                </label>
-                <div className="relative group">
-                  <Lock className="absolute left-4 top-1/2 transform -translate-y-1/2 text-gray-400 group-focus-within:text-[#ddb963] transition-colors" size={20} />
-                  <input
-                    type={showPassword ? "text" : "password"}
-                    value={credentials.password}
-                    onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
-                    className="w-full pl-12 pr-12 py-3.5 border-2 border-gray-200 rounded-xl focus:border-[#ddb963] focus:outline-none transition-all bg-gray-50 focus:bg-white"
-                    placeholder="Digite sua senha"
-                    required
-                    disabled={isLoading}
-                  />
-                  <button
-                    type="button"
-                    onClick={() => setShowPassword(!showPassword)}
-                    className="absolute right-4 top-1/2 transform -translate-y-1/2 text-gray-400 hover:text-gray-600 transition-colors"
-                    disabled={isLoading}
-                  >
-                    {showPassword ? <EyeOff size={20} /> : <Eye size={20} />}
-                  </button>
-                </div>
-              </motion.div>
-
-              {/* Mensagem de Erro */}
-              {error && (
-                <motion.div
-                  initial={{ opacity: 0, y: -10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="bg-red-50 border-l-4 border-red-500 text-red-700 px-4 py-3 rounded-lg text-sm flex items-center gap-2"
-                >
-                  <span className="font-semibold">Erro:</span>
-                  <span>{error}</span>
-                </motion.div>
-              )}
-
-              {/* Botão de Login */}
-              <motion.button
-                type="submit"
-                disabled={isLoading}
-                whileHover={{ scale: isLoading ? 1 : 1.02 }}
-                whileTap={{ scale: isLoading ? 1 : 0.98 }}
-                className="w-full bg-gradient-to-r from-[#ddb963] to-[#e8c77d] text-white py-4 rounded-xl font-bold text-lg shadow-lg hover:shadow-xl transition-all disabled:opacity-70 disabled:cursor-not-allowed relative overflow-hidden group"
-              >
-                {isLoading ? (
-                  <span className="flex items-center justify-center gap-2">
-                    <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
-                      <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none"></circle>
-                      <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                    </svg>
-                    Autenticando...
-                  </span>
-                ) : (
-                  <>
-                    <span className="relative z-10">Acessar Painel</span>
-                    <div className="absolute inset-0 bg-gradient-to-r from-[#e8c77d] to-[#ddb963] opacity-0 group-hover:opacity-100 transition-opacity"></div>
-                  </>
-                )}
-              </motion.button>
-            </form>
-          </div>
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4 }}
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/5 border border-white/10 mb-6">
+              <ShieldCheck size={14} className="text-accent" />
+              <span className="text-[10px] text-slate-400 uppercase font-black tracking-widest">Área Restrita</span>
+            </div>
+            <h1 className="text-3xl font-black text-white tracking-tight">Painel <span className="text-gradient-gold">Administrativo</span></h1>
+            <p className="text-slate-500 text-sm mt-2 font-light">Acesso exclusivo para administradores</p>
+          </motion.div>
         </div>
 
-        {/* Footer */}
+        {/* Form Card */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3 }}
+          className="bg-white/[0.03] backdrop-blur-xl border border-white/10 rounded-[2.5rem] p-10 shadow-2xl"
+        >
+          <form onSubmit={handleLogin} className="space-y-6">
+            {/* Username Field */}
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.4 }}
+              className="space-y-2"
+            >
+              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                Usuário
+              </label>
+              <div className="relative group">
+                <User className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-accent transition-colors" size={18} />
+                <input
+                  type="text"
+                  value={credentials.username}
+                  onChange={(e) => setCredentials({ ...credentials, username: e.target.value })}
+                  className="w-full pl-14 pr-5 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent/60 focus:bg-white/8 outline-none transition-all text-white font-medium placeholder:text-slate-600"
+                  placeholder="admin"
+                  required
+                  disabled={isLoading}
+                />
+              </div>
+            </motion.div>
+
+            {/* Password Field */}
+            <motion.div
+              initial={{ x: -20, opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="space-y-2"
+            >
+              <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">
+                Senha
+              </label>
+              <div className="relative group">
+                <Lock className="absolute left-5 top-1/2 -translate-y-1/2 text-slate-500 group-focus-within:text-accent transition-colors" size={18} />
+                <input
+                  type={showPassword ? "text" : "password"}
+                  value={credentials.password}
+                  onChange={(e) => setCredentials({ ...credentials, password: e.target.value })}
+                  className="w-full pl-14 pr-14 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent/60 focus:bg-white/8 outline-none transition-all text-white font-medium placeholder:text-slate-600"
+                  placeholder="••••••••"
+                  required
+                  disabled={isLoading}
+                />
+                <button
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-5 top-1/2 -translate-y-1/2 text-slate-500 hover:text-slate-300 transition-colors"
+                  disabled={isLoading}
+                >
+                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                </button>
+              </div>
+            </motion.div>
+
+            {/* Error Message */}
+            {error && (
+              <motion.div
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="bg-red-500/10 border border-red-500/30 text-red-400 px-5 py-4 rounded-2xl text-sm"
+              >
+                <span className="font-bold">Erro: </span>{error}
+              </motion.div>
+            )}
+
+            {/* Submit Button */}
+            <motion.button
+              type="submit"
+              disabled={isLoading}
+              whileHover={{ scale: isLoading ? 1 : 1.02 }}
+              whileTap={{ scale: isLoading ? 1 : 0.98 }}
+              className="btn-premium btn-gold w-full !py-5 text-base mt-8 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              {isLoading ? (
+                <span className="flex items-center justify-center gap-3">
+                  <svg className="animate-spin h-5 w-5" viewBox="0 0 24 24">
+                    <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4" fill="none" />
+                    <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z" />
+                  </svg>
+                  Autenticando...
+                </span>
+              ) : (
+                <>
+                  <ShieldCheck size={20} />
+                  Acessar Painel
+                </>
+              )}
+            </motion.button>
+          </form>
+        </motion.div>
+
         <motion.p
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.8, duration: 0.5 }}
-          className="text-center text-white/60 text-sm mt-6"
+          transition={{ delay: 0.8 }}
+          className="text-center text-slate-600 text-xs mt-8 tracking-widest uppercase"
         >
-          © 2026 SAAB Multimarcas. Todos os direitos reservados.
+          © 2026 SAAB Multimarcas
         </motion.p>
       </motion.div>
     </div>

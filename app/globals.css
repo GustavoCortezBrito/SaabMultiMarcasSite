@@ -1,27 +1,67 @@
 @import "tailwindcss";
 
-* {
-  scroll-behavior: smooth;
+@theme {
+  --color-primary: #0A192F;
+  --color-secondary: #112240;
+  --color-accent: #C5A059;
+  --color-accent-light: #E2C284;
+  --color-gold-gradient-start: #C5A059;
+  --color-gold-gradient-end: #8E6D2F;
+  --color-surface: #F8FAFC;
+  
+  --font-sans: 'Outfit', 'Inter', system-ui, sans-serif;
+  
+  --shadow-premium: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+  --shadow-gold: 0 10px 15px -3px rgba(197, 160, 89, 0.3);
 }
 
-body {
-  overflow-x: hidden;
-  background: #ffffff;
-  color: #1a1a1a;
-  font-family: Arial, Helvetica, sans-serif;
+@layer base {
+  * {
+    @apply border-gray-200;
+    scroll-behavior: smooth;
+  }
+  
+  body {
+    @apply bg-white text-slate-900 antialiased;
+    font-family: var(--font-sans);
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/80 backdrop-blur-md border border-white/20 shadow-xl;
+  }
+  
+  .btn-premium {
+    @apply relative overflow-hidden px-6 py-3 rounded-xl font-bold transition-all duration-300
+           hover:shadow-premium active:scale-95 flex items-center justify-center gap-2;
+  }
+  
+  .btn-gold {
+    @apply bg-gradient-to-r from-accent to-accent-light text-primary hover:brightness-110;
+  }
+  
+  .btn-outline {
+    @apply border-2 border-accent text-accent hover:bg-accent hover:text-primary;
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-accent via-accent-light to-accent bg-clip-text text-transparent;
+  }
 }
 
 .rww-widget-header {
-  background: linear-gradient(135deg, #0F5FA8 0%, #0a4580 100%) !important;
+  background: linear-gradient(135deg, #0A192F 0%, #112240 100%) !important;
 }
 
 .rww-send-button {
-  background-color: #D4A853 !important;
+  background-color: #C5A059 !important;
   cursor: pointer !important;
 }
 
 .rww-send-button:hover {
-  background-color: #c49843 !important;
+  background-color: #E2C284 !important;
   cursor: pointer !important;
 }
 
@@ -29,4 +69,5 @@ body {
 button, a, [role="button"] {
   cursor: pointer;
 }
+
 

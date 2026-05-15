@@ -4,7 +4,7 @@ import { motion } from "framer-motion";
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import Logo from "@/components/Logo";
-import { Plus, Edit, Trash2, LogOut, Save, X } from "lucide-react";
+import { Plus, Edit, Trash2, LogOut, Save, X, Settings, Car, ChevronRight, Hash } from "lucide-react";
 import { vehicleAPI, Vehicle } from "@/lib/api";
 
 export default function AdminDashboard() {
@@ -30,7 +30,6 @@ export default function AdminDashboard() {
       setVehicles(data);
     } catch (error) {
       console.error("Erro ao carregar veículos:", error);
-      alert("Erro ao carregar veículos. Certifique-se de que o servidor JSON está rodando (npm run db).");
     } finally {
       setLoading(false);
     }
@@ -69,10 +68,8 @@ export default function AdminDashboard() {
       try {
         await vehicleAPI.delete(id);
         await loadVehicles();
-        alert("Veículo excluído com sucesso!");
       } catch (error) {
         console.error("Erro ao excluir veículo:", error);
-        alert("Erro ao excluir veículo.");
       }
     }
   };
@@ -98,10 +95,8 @@ export default function AdminDashboard() {
       await loadVehicles();
       setIsEditing(false);
       setEditingVehicle(null);
-      alert("Veículo salvo com sucesso!");
     } catch (error) {
       console.error("Erro ao salvar veículo:", error);
-      alert("Erro ao salvar veículo.");
     }
   };
 
@@ -125,83 +120,106 @@ export default function AdminDashboard() {
   };
 
   return (
-    <div className="min-h-screen bg-gray-50">
-      <header className="bg-[#004c97] shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-          <Logo size="sm" />
-          <div className="flex items-center gap-4">
-            <span className="text-white font-semibold">Admin</span>
+    <div className="min-h-screen bg-surface">
+      <header className="bg-primary border-b border-white/5 sticky top-0 z-40">
+        <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+          <div className="flex items-center gap-6">
+            <Logo size="sm" />
+            <div className="h-6 w-[1px] bg-white/10 hidden md:block" />
+            <div className="hidden md:flex items-center gap-2 text-slate-400">
+               <Settings size={14} className="text-accent" />
+               <span className="text-[10px] uppercase font-black tracking-widest">Painel Administrativo</span>
+            </div>
+          </div>
+          <div className="flex items-center gap-6">
             <button
               onClick={handleLogout}
-              className="flex items-center gap-2 bg-white/10 hover:bg-white/20 text-white px-4 py-2 rounded-lg transition-colors cursor-pointer"
+              className="group flex items-center gap-2 text-slate-400 hover:text-white transition-colors"
             >
-              <LogOut size={18} />
-              Sair
+              <span className="text-[10px] uppercase font-black tracking-widest">Sair do Sistema</span>
+              <div className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-red-500/10 group-hover:text-red-500 transition-all">
+                <LogOut size={18} />
+              </div>
             </button>
           </div>
         </div>
       </header>
 
-      <main className="max-w-7xl mx-auto px-4 py-8">
-        <div className="flex items-center justify-between mb-8">
-          <h1 className="text-3xl font-bold text-[#004c97]">
-            Gerenciar Veículos
-          </h1>
+      <main className="max-w-7xl mx-auto px-6 py-12">
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 mb-12">
+          <div>
+            <h1 className="text-4xl font-black text-primary tracking-tight mb-2">
+              Gestão de <span className="text-gradient-gold">Estoque</span>
+            </h1>
+            <p className="text-slate-500 font-light text-sm">Controle total sobre os veículos exibidos no site.</p>
+          </div>
           <motion.button
             onClick={handleAddVehicle}
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.95 }}
-            className="flex items-center gap-2 bg-[#ddb963] text-white px-6 py-3 rounded-lg font-semibold hover:bg-[#c9a855] transition-colors cursor-pointer"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+            className="btn-premium btn-gold"
           >
             <Plus size={20} />
-            Adicionar Veículo
+            Cadastrar Veículo
           </motion.button>
         </div>
 
         {loading ? (
-          <div className="text-center py-20">
-            <p className="text-2xl text-gray-400">Carregando veículos...</p>
+          <div className="text-center py-40">
+            <div className="w-12 h-12 border-2 border-accent border-t-transparent rounded-full animate-spin mx-auto mb-4" />
+            <p className="text-slate-400 font-light">Carregando base de dados...</p>
           </div>
         ) : (
-          <div className="grid gap-4">
+          <div className="grid gap-6">
             {vehicles.map((vehicle) => (
               <motion.div
                 key={vehicle.id}
-                initial={{ opacity: 0, y: 20 }}
+                initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="bg-white rounded-xl shadow-md p-6 flex items-center justify-between"
+                className="group bg-white rounded-[2rem] border border-slate-100 p-6 md:p-8 flex flex-col md:flex-row items-center justify-between gap-6 hover:shadow-premium transition-all duration-500"
               >
-                <div className="flex-1">
-                  <h3 className="text-xl font-bold text-[#004c97] mb-2">
-                    {vehicle.brand} {vehicle.model}
-                  </h3>
-                  <div className="grid grid-cols-4 gap-4 text-sm text-gray-600">
+                <div className="flex items-center gap-6 flex-1 w-full">
+                  <div className="w-16 h-16 rounded-2xl bg-primary flex items-center justify-center text-accent shrink-0 group-hover:scale-110 transition-transform">
+                    <Car size={32} />
+                  </div>
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center gap-3 mb-2">
+                       <span className="text-accent text-[10px] font-black uppercase tracking-widest">{vehicle.brand}</span>
+                       <div className="w-1 h-1 bg-slate-200 rounded-full" />
+                       <span className="text-slate-400 text-[10px] font-bold">{vehicle.year}</span>
+                    </div>
+                    <h3 className="text-xl font-black text-primary truncate tracking-tight">
+                      {vehicle.model}
+                    </h3>
+                  </div>
+                  <div className="hidden lg:grid grid-cols-3 gap-12 text-right px-12 border-x border-slate-50">
                     <div>
-                      <span className="font-semibold">Ano:</span> {vehicle.year}
+                      <span className="block text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">Preço</span>
+                      <span className="text-primary font-bold">{vehicle.price}</span>
                     </div>
                     <div>
-                      <span className="font-semibold">KM:</span> {vehicle.km}
+                      <span className="block text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">KM</span>
+                      <span className="text-primary font-bold">{vehicle.km}</span>
                     </div>
                     <div>
-                      <span className="font-semibold">Preço:</span> {vehicle.price}
-                    </div>
-                    <div>
-                      <span className="font-semibold">Combustível:</span> {vehicle.fuel}
+                      <span className="block text-[9px] text-slate-400 font-black uppercase tracking-widest mb-1">Câmbio</span>
+                      <span className="text-primary font-bold">{vehicle.transmission}</span>
                     </div>
                   </div>
                 </div>
-                <div className="flex gap-2">
+                <div className="flex gap-3 w-full md:w-auto">
                   <button
                     onClick={() => handleEditVehicle(vehicle)}
-                    className="p-2 bg-blue-500 text-white rounded-lg hover:bg-blue-600 transition-colors cursor-pointer"
+                    className="flex-1 md:flex-none h-12 px-6 bg-slate-50 text-slate-600 rounded-xl hover:bg-primary hover:text-white transition-all flex items-center justify-center gap-2 font-bold text-xs uppercase tracking-widest"
                   >
-                    <Edit size={20} />
+                    <Edit size={16} />
+                    Editar
                   </button>
                   <button
                     onClick={() => handleDeleteVehicle(vehicle.id)}
-                    className="p-2 bg-red-500 text-white rounded-lg hover:bg-red-600 transition-colors cursor-pointer"
+                    className="w-12 h-12 bg-red-50 text-red-500 rounded-xl hover:bg-red-500 hover:text-white transition-all flex items-center justify-center"
                   >
-                    <Trash2 size={20} />
+                    <Trash2 size={18} />
                   </button>
                 </div>
               </motion.div>
@@ -210,177 +228,209 @@ export default function AdminDashboard() {
         )}
       </main>
 
-      {/* Modal de Edição */}
-      {isEditing && editingVehicle && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+      {/* Modern Editor Modal */}
+      <AnimatePresence>
+        {isEditing && editingVehicle && (
           <motion.div
-            initial={{ scale: 0.9, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            className="bg-white rounded-2xl max-w-4xl w-full max-h-[90vh] overflow-y-auto p-8"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 bg-primary/95 backdrop-blur-md flex items-center justify-center p-4 md:p-10 z-[100]"
           >
-            <div className="flex items-center justify-between mb-6">
-              <h2 className="text-2xl font-bold text-[#004c97]">
-                {vehicles.find(v => v.id === editingVehicle.id) ? "Editar" : "Adicionar"} Veículo
-              </h2>
-              <button
-                onClick={() => {
-                  setIsEditing(false);
-                  setEditingVehicle(null);
-                }}
-                className="text-gray-400 hover:text-gray-600 cursor-pointer"
-              >
-                <X size={24} />
-              </button>
-            </div>
-
-            <div className="grid md:grid-cols-2 gap-4 mb-6">
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Marca</label>
-                <input
-                  type="text"
-                  value={editingVehicle.brand}
-                  onChange={(e) => setEditingVehicle({ ...editingVehicle, brand: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Modelo</label>
-                <input
-                  type="text"
-                  value={editingVehicle.model}
-                  onChange={(e) => setEditingVehicle({ ...editingVehicle, model: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Ano</label>
-                <input
-                  type="text"
-                  value={editingVehicle.year}
-                  onChange={(e) => setEditingVehicle({ ...editingVehicle, year: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">KM</label>
-                <input
-                  type="text"
-                  value={editingVehicle.km}
-                  onChange={(e) => setEditingVehicle({ ...editingVehicle, km: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Preço</label>
-                <input
-                  type="text"
-                  value={editingVehicle.price}
-                  onChange={(e) => setEditingVehicle({ ...editingVehicle, price: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
-                />
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Combustível</label>
-                <select
-                  value={editingVehicle.fuel}
-                  onChange={(e) => setEditingVehicle({ ...editingVehicle, fuel: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none cursor-pointer"
-                >
-                  <option value="Flex">Flex</option>
-                  <option value="Gasolina">Gasolina</option>
-                  <option value="Diesel">Diesel</option>
-                  <option value="Elétrico">Elétrico</option>
-                  <option value="Híbrido">Híbrido</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Câmbio</label>
-                <select
-                  value={editingVehicle.transmission}
-                  onChange={(e) => setEditingVehicle({ ...editingVehicle, transmission: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none cursor-pointer"
-                >
-                  <option value="Manual">Manual</option>
-                  <option value="Automático">Automático</option>
-                </select>
-              </div>
-              <div>
-                <label className="block text-sm font-semibold text-gray-700 mb-2">Cor</label>
-                <input
-                  type="text"
-                  value={editingVehicle.color}
-                  onChange={(e) => setEditingVehicle({ ...editingVehicle, color: e.target.value })}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
-                />
-              </div>
-            </div>
-
-            <div className="mb-6">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Descrição</label>
-              <textarea
-                value={editingVehicle.description}
-                onChange={(e) => setEditingVehicle({ ...editingVehicle, description: e.target.value })}
-                rows={4}
-                className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
-              />
-            </div>
-
-            <div className="mb-6">
-              <label className="block text-sm font-semibold text-gray-700 mb-2">Equipamentos</label>
-              <div className="flex gap-2 mb-3">
-                <input
-                  type="text"
-                  value={newFeature}
-                  onChange={(e) => setNewFeature(e.target.value)}
-                  onKeyPress={(e) => e.key === 'Enter' && handleAddFeature()}
-                  placeholder="Digite um equipamento..."
-                  className="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:border-[#ddb963] focus:outline-none"
-                />
+            <motion.div
+              initial={{ scale: 0.95, opacity: 0, y: 20 }}
+              animate={{ scale: 1, opacity: 1, y: 0 }}
+              exit={{ scale: 0.95, opacity: 0, y: 20 }}
+              className="bg-white rounded-[3rem] max-w-5xl w-full max-h-full overflow-hidden flex flex-col shadow-2xl"
+            >
+              <div className="px-10 py-8 border-b border-slate-50 flex items-center justify-between shrink-0">
+                <div className="flex items-center gap-4">
+                  <div className="w-10 h-10 rounded-xl bg-accent/10 flex items-center justify-center text-accent">
+                    <Plus size={20} />
+                  </div>
+                  <h2 className="text-2xl font-black text-primary tracking-tight">
+                    {vehicles.find(v => v.id === editingVehicle.id) ? "Editar" : "Novo"} Veículo
+                  </h2>
+                </div>
                 <button
-                  onClick={handleAddFeature}
-                  className="px-4 py-2 bg-[#ddb963] text-white rounded-lg hover:bg-[#c9a855] transition-colors cursor-pointer"
+                  onClick={() => {
+                    setIsEditing(false);
+                    setEditingVehicle(null);
+                  }}
+                  className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-slate-400 hover:text-primary hover:rotate-90 transition-all"
                 >
-                  Adicionar
+                  <X size={20} />
                 </button>
               </div>
-              <div className="flex flex-wrap gap-2">
-                {editingVehicle.features.map((feature, index) => (
-                  <div
-                    key={index}
-                    className="flex items-center gap-2 bg-gray-100 px-3 py-1 rounded-full"
-                  >
-                    <span className="text-sm">{feature}</span>
-                    <button
-                      onClick={() => handleRemoveFeature(index)}
-                      className="text-red-500 hover:text-red-700 cursor-pointer"
-                    >
-                      <X size={16} />
-                    </button>
-                  </div>
-                ))}
-              </div>
-            </div>
 
-            <div className="flex gap-3 justify-end">
-              <button
-                onClick={() => {
-                  setIsEditing(false);
-                  setEditingVehicle(null);
-                }}
-                className="px-6 py-3 bg-gray-300 text-gray-700 rounded-lg font-semibold hover:bg-gray-400 transition-colors cursor-pointer"
-              >
-                Cancelar
-              </button>
-              <button
-                onClick={handleSaveEdit}
-                className="px-6 py-3 bg-[#004c97] text-white rounded-lg font-semibold hover:bg-[#003366] transition-colors cursor-pointer"
-              >
-                Salvar
-              </button>
-            </div>
+              <div className="p-10 overflow-y-auto space-y-10">
+                {/* Form Sections */}
+                <div className="grid md:grid-cols-3 gap-8">
+                  <div className="space-y-6 md:col-span-2">
+                     <div className="grid md:grid-cols-2 gap-6">
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Marca</label>
+                          <input
+                            type="text"
+                            value={editingVehicle.brand}
+                            onChange={(e) => setEditingVehicle({ ...editingVehicle, brand: e.target.value })}
+                            placeholder="Ex: Toyota"
+                            className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-accent focus:bg-white outline-none transition-all font-bold"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Modelo</label>
+                          <input
+                            type="text"
+                            value={editingVehicle.model}
+                            onChange={(e) => setEditingVehicle({ ...editingVehicle, model: e.target.value })}
+                            placeholder="Ex: Corolla"
+                            className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-accent focus:bg-white outline-none transition-all font-bold"
+                          />
+                        </div>
+                     </div>
+
+                     <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Ano</label>
+                          <input
+                            type="text"
+                            value={editingVehicle.year}
+                            onChange={(e) => setEditingVehicle({ ...editingVehicle, year: e.target.value })}
+                            className="w-full px-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-accent outline-none font-bold text-center"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Quilometragem</label>
+                          <input
+                            type="text"
+                            value={editingVehicle.km}
+                            onChange={(e) => setEditingVehicle({ ...editingVehicle, km: e.target.value })}
+                            className="w-full px-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-accent outline-none font-bold text-center"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Cor</label>
+                          <input
+                            type="text"
+                            value={editingVehicle.color}
+                            onChange={(e) => setEditingVehicle({ ...editingVehicle, color: e.target.value })}
+                            className="w-full px-4 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-accent outline-none font-bold text-center"
+                          />
+                        </div>
+                        <div className="space-y-2">
+                          <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Preço</label>
+                          <input
+                            type="text"
+                            value={editingVehicle.price}
+                            onChange={(e) => setEditingVehicle({ ...editingVehicle, price: e.target.value })}
+                            className="w-full px-4 py-4 bg-accent/5 border border-accent/10 rounded-2xl focus:border-accent outline-none font-bold text-accent text-center"
+                          />
+                        </div>
+                     </div>
+
+                     <div className="space-y-2">
+                        <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Descrição</label>
+                        <textarea
+                          value={editingVehicle.description}
+                          onChange={(e) => setEditingVehicle({ ...editingVehicle, description: e.target.value })}
+                          rows={4}
+                          placeholder="Fale sobre o estado do veículo, revisões e diferenciais..."
+                          className="w-full px-6 py-4 bg-slate-50 border border-slate-100 rounded-2xl focus:border-accent focus:bg-white outline-none transition-all font-medium resize-none"
+                        />
+                     </div>
+                  </div>
+
+                  <div className="space-y-8 bg-slate-50/50 p-8 rounded-[2rem] border border-slate-100">
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Combustível</label>
+                      <select
+                        value={editingVehicle.fuel}
+                        onChange={(e) => setEditingVehicle({ ...editingVehicle, fuel: e.target.value })}
+                        className="w-full px-4 py-4 bg-white border border-slate-200 rounded-2xl focus:border-accent outline-none font-bold appearance-none cursor-pointer"
+                      >
+                        <option value="Flex">Flex</option>
+                        <option value="Gasolina">Gasolina</option>
+                        <option value="Diesel">Diesel</option>
+                        <option value="Elétrico">Elétrico</option>
+                        <option value="Híbrido">Híbrido</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-2">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Câmbio</label>
+                      <select
+                        value={editingVehicle.transmission}
+                        onChange={(e) => setEditingVehicle({ ...editingVehicle, transmission: e.target.value })}
+                        className="w-full px-4 py-4 bg-white border border-slate-200 rounded-2xl focus:border-accent outline-none font-bold appearance-none cursor-pointer"
+                      >
+                        <option value="Manual">Manual</option>
+                        <option value="Automático">Automático</option>
+                      </select>
+                    </div>
+
+                    <div className="space-y-4">
+                      <label className="text-[10px] font-black text-slate-400 uppercase tracking-widest ml-1">Opcionais do Veículo</label>
+                      <div className="flex gap-2">
+                        <input
+                          type="text"
+                          value={newFeature}
+                          onChange={(e) => setNewFeature(e.target.value)}
+                          onKeyPress={(e) => e.key === 'Enter' && handleAddFeature()}
+                          placeholder="Ar Condicionado..."
+                          className="flex-1 px-4 py-3 bg-white border border-slate-200 rounded-xl focus:border-accent outline-none text-xs"
+                        />
+                        <button
+                          onClick={handleAddFeature}
+                          className="w-10 h-10 bg-primary text-white rounded-xl flex items-center justify-center hover:bg-accent transition-colors"
+                        >
+                          <Plus size={18} />
+                        </button>
+                      </div>
+                      <div className="flex flex-wrap gap-2">
+                        {editingVehicle.features.map((feature, index) => (
+                          <div
+                            key={index}
+                            className="flex items-center gap-2 bg-white px-3 py-1.5 rounded-full border border-slate-200"
+                          >
+                            <span className="text-[10px] font-bold text-slate-600">{feature}</span>
+                            <button
+                              onClick={() => handleRemoveFeature(index)}
+                              className="text-slate-300 hover:text-red-500 transition-colors"
+                            >
+                              <X size={12} />
+                            </button>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="px-10 py-8 bg-slate-50 border-t border-slate-100 flex gap-4 justify-end shrink-0">
+                <button
+                  onClick={() => {
+                    setIsEditing(false);
+                    setEditingVehicle(null);
+                  }}
+                  className="px-8 py-4 text-[10px] font-black uppercase tracking-widest text-slate-400 hover:text-primary transition-colors"
+                >
+                  Descartar Alterações
+                </button>
+                <button
+                  onClick={handleSaveEdit}
+                  className="btn-premium btn-gold !px-12"
+                >
+                  <Save size={18} />
+                  Salvar Veículo
+                </button>
+              </div>
+            </motion.div>
           </motion.div>
-        </div>
-      )}
+        )}
+      </AnimatePresence>
     </div>
   );
 }
+

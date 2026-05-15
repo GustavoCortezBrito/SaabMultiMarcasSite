@@ -3,11 +3,11 @@
 import { motion } from "framer-motion";
 import { useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Phone, Mail, MapPin, MessageCircle } from "lucide-react";
+import { Phone, Mail, MapPin, MessageCircle, Clock, Send, ExternalLink } from "lucide-react";
 
 export default function Contact() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true });
+  const isInView = useInView(ref, { once: true, amount: 0.1 });
   const [formData, setFormData] = useState({
     nome: "",
     email: "",
@@ -53,237 +53,201 @@ export default function Contact() {
     });
   };
 
+  const contactInfo = [
+    {
+      icon: <Phone size={20} />,
+      label: "Telefone",
+      value: "(18) 99725-1860",
+      href: "tel:+5518997251860"
+    },
+    {
+      icon: <MessageCircle size={20} />,
+      label: "WhatsApp",
+      value: "(18) 99725-1860",
+      href: "https://wa.me/5518997251860"
+    },
+    {
+      icon: <Mail size={20} />,
+      label: "E-mail",
+      value: "Adm.saabmultimarcas@gmail.com",
+      href: "mailto:Adm.saabmultimarcas@gmail.com"
+    },
+    {
+      icon: <MapPin size={20} />,
+      label: "Endereço",
+      value: "Av. Joaquim Constantino, 1868 - Pres. Prudente/SP",
+      href: "https://maps.google.com/?q=Av.+Joaquim+Constantino,+1868+-+Vila+Formosa,+Pres.+Prudente+-+SP,+19050-220"
+    },
+    {
+      icon: <Clock size={20} />,
+      label: "Horário",
+      value: "Seg-Sex: 08:00-18:00 | Sáb: 08:00-12:00",
+      href: "#"
+    }
+  ];
+
   return (
-    <section id="contato" ref={ref} className="py-20 px-4 bg-gray-50">
+    <section id="contato" ref={ref} className="py-24 px-6 bg-white relative overflow-hidden">
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-accent/5 blur-[150px] rounded-full -z-10" />
+      
       <div className="max-w-7xl mx-auto">
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 30 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-16"
+          className="text-center mb-20"
         >
-          <motion.h2 
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={isInView ? { opacity: 1, scale: 1 } : { opacity: 0, scale: 0.9 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-4xl md:text-5xl font-bold text-[#004c97] mb-4"
-          >
-            Entre em <span className="text-[#ddb963]">Contato</span>
-          </motion.h2>
-          <motion.p 
-            initial={{ opacity: 0 }}
-            animate={isInView ? { opacity: 1 } : { opacity: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
-            className="text-gray-600 text-lg"
-          >
-            Encontre o carro ideal com segurança, agilidade e confiança
-          </motion.p>
+          <h2 className="text-4xl md:text-6xl font-black text-primary mb-6 tracking-tight">
+            Entre em <span className="text-gradient-gold">Contato</span>
+          </h2>
+          <p className="text-slate-500 text-lg font-light max-w-2xl mx-auto leading-relaxed">
+            Estamos prontos para tirar suas dúvidas e ajudar você a conquistar seu próximo veículo.
+          </p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 gap-12 mb-16">
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: -50 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-          >
-            <h3 className="text-2xl font-bold text-[#004c97] mb-8">Fale Conosco</h3>
-            <div className="space-y-6">
-              <motion.div 
-                whileHover={{ x: 8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
+        <div className="grid lg:grid-cols-12 gap-12 mb-24">
+          {/* Contact Info Cards */}
+          <div className="lg:col-span-5 space-y-4">
+            {contactInfo.map((info, idx) => (
+              <motion.a
+                key={idx}
+                href={info.href}
+                target={info.href.startsWith("http") ? "_blank" : undefined}
+                initial={{ opacity: 0, x: -30 }}
+                animate={isInView ? { opacity: 1, x: 0 } : {}}
+                transition={{ delay: 0.1 * idx }}
+                className="flex items-center gap-6 p-6 rounded-[2rem] bg-surface border border-slate-100 hover:border-accent group transition-all duration-500"
               >
-                <motion.div 
-                  className="bg-[#ddb963] p-3 rounded-lg"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Phone className="text-white" size={24} />
-                </motion.div>
-                <div>
-                  <p className="text-sm text-gray-500">Telefone</p>
-                  <a href="tel:+5518997251860" className="text-[#004c97] font-semibold hover:text-[#ddb963] transition-colors cursor-pointer">
-                    (18) 99725-1860
-                  </a>
+                <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500 group-hover:rotate-[15deg]">
+                  {info.icon}
                 </div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ x: 8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <motion.div 
-                  className="bg-[#ddb963] p-3 rounded-lg"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <MessageCircle className="text-white" size={24} />
-                </motion.div>
-                <div>
-                  <p className="text-sm text-gray-500">WhatsApp</p>
-                  <a href="https://wa.me/5518997251860" target="_blank" rel="noopener noreferrer" className="text-[#004c97] font-semibold hover:text-[#ddb963] transition-colors cursor-pointer">
-                    (18) 99725-1860
-                  </a>
+                <div className="flex-grow">
+                  <span className="text-[10px] text-slate-400 uppercase font-black tracking-widest block mb-1">{info.label}</span>
+                  <span className="text-primary font-bold tracking-tight group-hover:text-accent transition-colors">{info.value}</span>
                 </div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ x: 8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <motion.div 
-                  className="bg-[#ddb963] p-3 rounded-lg"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <Mail className="text-white" size={24} />
-                </motion.div>
-                <div>
-                  <p className="text-sm text-gray-500">E-mail</p>
-                  <a href="mailto:Adm.saabmultimarcas@gmail.com" className="text-[#004c97] font-semibold hover:text-[#ddb963] transition-colors cursor-pointer">
-                    Adm.saabmultimarcas@gmail.com
-                  </a>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ x: 8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <motion.div 
-                  className="bg-[#ddb963] p-3 rounded-lg"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <MapPin className="text-white" size={24} />
-                </motion.div>
-                <div>
-                  <p className="text-sm text-gray-500">Endereço</p>
-                  <a 
-                    href="https://maps.google.com/?q=Av.+Joaquim+Constantino,+1868+-+Vila+Formosa,+Pres.+Prudente+-+SP,+19050-220" 
-                    target="_blank" 
-                    rel="noopener noreferrer"
-                    className="text-[#004c97] font-semibold hover:text-[#ddb963] transition-colors cursor-pointer"
-                  >
-                    Av. Joaquim Constantino, 1868<br />
-                    Vila Formosa - Pres. Prudente/SP
-                  </a>
-                </div>
-              </motion.div>
-              
-              <motion.div 
-                whileHover={{ x: 8, scale: 1.02 }}
-                transition={{ type: "spring", stiffness: 300 }}
-                className="flex items-center gap-4 p-4 bg-white rounded-xl shadow-sm hover:shadow-md transition-shadow"
-              >
-                <motion.div 
-                  className="bg-[#ddb963] p-3 rounded-lg"
-                  whileHover={{ rotate: 360 }}
-                  transition={{ duration: 0.5 }}
-                >
-                  <svg className="w-6 h-6 text-white" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
-                  </svg>
-                </motion.div>
-                <div>
-                  <p className="text-sm text-gray-500">Horário</p>
-                  <span className="text-[#004c97] font-semibold">
-                    Seg-Sex: 08:00-18:00<br />
-                    Sáb: 08:00-12:00
-                  </span>
-                </div>
-              </motion.div>
-            </div>
-          </motion.div>
+                <ExternalLink size={16} className="text-slate-300 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+              </motion.a>
+            ))}
+          </div>
           
+          {/* Modern Form */}
           <motion.div
-            initial={{ opacity: 0, x: 50 }}
-            animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 50 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="bg-white p-8 rounded-2xl shadow-lg"
+            initial={{ opacity: 0, scale: 0.95 }}
+            animate={isInView ? { opacity: 1, scale: 1 } : {}}
+            transition={{ duration: 0.8, delay: 0.4 }}
+            className="lg:col-span-7 bg-primary p-10 md:p-12 rounded-[3rem] shadow-premium relative overflow-hidden group"
           >
-            <h3 className="text-2xl font-bold text-[#004c97] mb-6">Envie uma Mensagem</h3>
-            <form onSubmit={handleSubmit} className="space-y-4">
-              {/* FormSubmit Configuration */}
-              <input type="hidden" name="_subject" value="Nova mensagem do site SAAB Multimarcas" />
-              <input type="hidden" name="_captcha" value="false" />
-              <input type="hidden" name="_template" value="table" />
-              <input type="hidden" name="_autoresponse" value="Obrigado pelo contato! Em breve retornaremos." />
-              
-              <input
-                type="text"
-                name="nome"
-                value={formData.nome}
-                onChange={handleChange}
-                placeholder="Seu Nome"
-                required
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none transition-colors"
-              />
-              <input
-                type="email"
-                name="email"
-                value={formData.email}
-                onChange={handleChange}
-                placeholder="Seu E-mail"
-                required
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none transition-colors"
-              />
-              <input
-                type="tel"
-                name="telefone"
-                value={formData.telefone}
-                onChange={handleChange}
-                placeholder="Seu Telefone"
-                required
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none transition-colors"
-              />
-              <textarea
-                name="mensagem"
-                value={formData.mensagem}
-                onChange={handleChange}
-                placeholder="Sua Mensagem"
-                rows={4}
-                required
-                className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:border-[#ddb963] focus:outline-none transition-colors resize-none"
-              />
-              <motion.button
-                type="submit"
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                className="w-full bg-gradient-to-r from-[#ddb963] to-[#e8c77d] text-white py-4 rounded-lg font-semibold hover:shadow-lg transition-shadow cursor-pointer flex items-center justify-center gap-2"
-              >
-                <MessageCircle size={20} />
-                Enviar para Email e WhatsApp
-              </motion.button>
-              <p className="text-xs text-gray-500 text-center">
-                Ao enviar, você receberá um email de confirmação e será redirecionado para o WhatsApp
-              </p>
-            </form>
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 blur-3xl -z-0" />
+            
+            <div className="relative z-10">
+              <h3 className="text-3xl font-black text-white mb-8 tracking-tight">Envie uma Mensagem</h3>
+              <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
+                <input type="hidden" name="_subject" value="Nova mensagem do site SAAB Multimarcas" />
+                <input type="hidden" name="_captcha" value="false" />
+                
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Nome Completo</label>
+                  <input
+                    type="text"
+                    name="nome"
+                    value={formData.nome}
+                    onChange={handleChange}
+                    placeholder="Como podemos te chamar?"
+                    required
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600"
+                  />
+                </div>
+
+                <div className="space-y-2">
+                  <label className="text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">E-mail</label>
+                  <input
+                    type="email"
+                    name="email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    placeholder="seu@email.com"
+                    required
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600"
+                  />
+                </div>
+
+                <div className="space-y-2 md:col-span-2">
+                  <label className="text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Telefone / WhatsApp</label>
+                  <input
+                    type="tel"
+                    name="telefone"
+                    value={formData.telefone}
+                    onChange={handleChange}
+                    placeholder="(00) 00000-0000"
+                    required
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600"
+                  />
+                </div>
+
+                <div className="space-y-2 md:col-span-2">
+                  <label className="text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Sua Mensagem</label>
+                  <textarea
+                    name="mensagem"
+                    value={formData.mensagem}
+                    onChange={handleChange}
+                    placeholder="No que podemos te ajudar hoje?"
+                    rows={4}
+                    required
+                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600 resize-none"
+                  />
+                </div>
+
+                <div className="md:col-span-2 mt-4">
+                  <motion.button
+                    type="submit"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    className="btn-premium btn-gold w-full !py-5 text-lg"
+                  >
+                    <Send size={20} />
+                    Enviar agora
+                  </motion.button>
+                  <p className="text-[10px] text-slate-500 text-center mt-6 uppercase tracking-widest font-medium">
+                    Aprovação de financiamento em até 24 horas
+                  </p>
+                </div>
+              </form>
+            </div>
           </motion.div>
         </div>
 
-        {/* Mapa */}
+        {/* Premium Map */}
         <motion.div
-          initial={{ opacity: 0, y: 50, scale: 0.95 }}
-          animate={isInView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y: 50, scale: 0.95 }}
-          transition={{ delay: 1, duration: 0.8 }}
-          className="bg-white rounded-2xl overflow-hidden shadow-lg"
+          initial={{ opacity: 0, y: 50 }}
+          animate={isInView ? { opacity: 1, y: 0 } : {}}
+          transition={{ delay: 0.6, duration: 1 }}
+          className="relative rounded-[3rem] overflow-hidden shadow-premium border border-slate-100 group"
         >
+          <div className="absolute inset-0 bg-primary/20 pointer-events-none z-10 group-hover:opacity-0 transition-opacity duration-700" />
           <iframe
             src="https://www.google.com/maps?q=Av.+Joaquim+Constantino,+1868,+Vila+Formosa,+Presidente+Prudente,+SP,+19050-220&output=embed"
             width="100%"
-            height="450"
-            style={{ border: 0 }}
+            height="500"
+            style={{ border: 0, filter: 'grayscale(0.5) contrast(1.2) invert(0)' }}
             allowFullScreen
             loading="lazy"
             referrerPolicy="no-referrer-when-downgrade"
             title="Localização SAAB Multimarcas"
           />
+          <div className="absolute bottom-8 left-8 right-8 z-20 pointer-events-none">
+             <div className="bg-white/80 backdrop-blur-md p-6 rounded-3xl border border-white shadow-2xl inline-flex items-center gap-4">
+                <div className="w-12 h-12 rounded-2xl bg-primary text-white flex items-center justify-center">
+                  <MapPin size={24} />
+                </div>
+                <div>
+                   <p className="text-xs uppercase font-black text-slate-400 tracking-widest">Onde estamos</p>
+                   <p className="font-bold text-primary">Av. Joaquim Constantino, 1868</p>
+                </div>
+             </div>
+          </div>
         </motion.div>
       </div>
     </section>
   );
 }
+
