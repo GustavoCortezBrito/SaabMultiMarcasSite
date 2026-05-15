@@ -20,7 +20,7 @@ export default function Header() {
 
   const navItems = [
     { name: "Início", href: "/" },
-    { name: "Estoque", href: "/#veiculos" },
+    { name: "Estoque", href: "/estoque" },
     { name: "Sobre", href: "/#sobre" },
     { name: "Serviços", href: "/#servicos" },
     { name: "FAQ", href: "/#faq" },
@@ -43,25 +43,28 @@ export default function Header() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <a href="/" className="block transition-transform hover:scale-105 active:scale-95">
+            <Link href="/" className="block transition-transform hover:scale-105 active:scale-95">
               <Logo size={isScrolled ? "sm" : "md"} />
-            </a>
+            </Link>
           </motion.div>
 
           {/* Desktop Navigation */}
           <nav className="hidden lg:flex items-center gap-10">
             {navItems.map((item, index) => (
-              <motion.a
+              <motion.div
                 key={item.name}
-                href={item.href}
                 initial={{ opacity: 0, y: -10 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: index * 0.1, duration: 0.5 }}
-                className="text-slate-200 hover:text-accent font-medium transition-all relative group text-sm uppercase tracking-widest"
               >
-                {item.name}
-                <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
-              </motion.a>
+                <Link
+                  href={item.href}
+                  className="text-slate-200 hover:text-accent font-medium transition-all relative group text-sm uppercase tracking-widest"
+                >
+                  {item.name}
+                  <span className="absolute -bottom-2 left-0 w-0 h-0.5 bg-accent transition-all duration-300 group-hover:w-full" />
+                </Link>
+              </motion.div>
             ))}
           </nav>
 
@@ -116,32 +119,35 @@ export default function Header() {
               animate={{ opacity: 1, height: "auto", y: 0 }}
               exit={{ opacity: 0, height: 0, y: -20 }}
               transition={{ duration: 0.4, ease: "circOut" }}
-              className="lg:hidden overflow-hidden bg-secondary/95 backdrop-blur-2xl rounded-3xl mt-4 border border-white/5 shadow-2xl"
+              className="lg:hidden overflow-hidden bg-primary/95 backdrop-blur-2xl rounded-2xl mt-4 border border-white/10 shadow-2xl"
             >
-              <nav className="flex flex-col gap-2 p-6">
+              <nav className="flex flex-col gap-1 p-4">
                 {navItems.map((item, idx) => (
-                  <motion.a
+                  <motion.div
+                    key={item.name}
                     initial={{ opacity: 0, x: -10 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ delay: idx * 0.05 }}
-                    key={item.name}
-                    href={item.href}
-                    onClick={() => setIsMobileMenuOpen(false)}
-                    className="text-slate-200 hover:text-accent font-medium transition-all py-3 px-4 rounded-xl hover:bg-white/5 flex items-center justify-between group"
                   >
-                    <span>{item.name}</span>
-                    <ArrowRight size={16} className="opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
-                  </motion.a>
+                    <Link
+                      href={item.href}
+                      onClick={() => setIsMobileMenuOpen(false)}
+                      className="text-slate-200 hover:text-accent font-medium transition-all py-4 px-4 rounded-xl hover:bg-white/5 flex items-center justify-between group border-b border-white/5 last:border-0"
+                    >
+                      <span className="text-sm uppercase tracking-widest">{item.name}</span>
+                      <ArrowRight size={16} className="text-accent/50 group-hover:text-accent transition-all" />
+                    </Link>
+                  </motion.div>
                 ))}
                 
-                <div className="mt-4 pt-6 border-t border-white/5 flex flex-col gap-4">
+                <div className="mt-2 pt-4 flex flex-col gap-3">
                   <a
                     href="tel:+5518997251860"
-                    className="flex items-center justify-between gap-2 text-white bg-white/5 p-4 rounded-2xl border border-white/5"
+                    className="flex items-center justify-between gap-2 text-white bg-accent/10 p-4 rounded-xl border border-accent/20"
                   >
                     <div className="flex flex-col">
-                      <span className="text-[10px] text-slate-400 uppercase tracking-widest">Ligar agora</span>
-                      <span className="font-bold">(18) 99725-1860</span>
+                      <span className="text-[10px] text-accent uppercase tracking-widest font-bold">Ligar agora</span>
+                      <span className="font-bold text-sm">(18) 99725-1860</span>
                     </div>
                     <div className="w-10 h-10 rounded-full bg-accent flex items-center justify-center text-primary">
                       <Phone size={18} />
@@ -151,10 +157,10 @@ export default function Header() {
                   <Link
                     href="/admin/login"
                     onClick={() => setIsMobileMenuOpen(false)}
-                    className="flex items-center justify-center gap-2 text-slate-500 hover:text-accent transition-colors py-2"
+                    className="flex items-center justify-center gap-2 text-slate-500 hover:text-accent transition-colors py-3"
                   >
-                    <Shield size={16} />
-                    <span className="text-xs uppercase tracking-tighter">Área Restrita</span>
+                    <Shield size={14} />
+                    <span className="text-[10px] uppercase tracking-widest font-black">Área Administrativa</span>
                   </Link>
                 </div>
               </nav>

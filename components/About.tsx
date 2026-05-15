@@ -97,12 +97,12 @@ export default function About() {
               animate={isInView ? { opacity: 1, y: 0 } : {}}
               transition={{ delay: 0.6 + (index * 0.1), duration: 0.6 }}
               whileHover={{ y: -10 }}
-              className="bg-surface p-10 rounded-[2.5rem] border border-slate-100 transition-all duration-300 group hover:shadow-premium"
+              className="bg-surface p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-slate-100 transition-all duration-300 group hover:shadow-premium"
             >
-              <div className="w-16 h-16 rounded-2xl bg-white shadow-sm flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-500 group-hover:rotate-[15deg]">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-white shadow-sm flex items-center justify-center text-accent mb-6 md:mb-8 group-hover:bg-accent group-hover:text-white transition-all duration-500 group-hover:rotate-[15deg]">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-primary mb-4 group-hover:text-accent transition-colors">
+              <h3 className="text-xl font-bold text-primary mb-3 md:mb-4 group-hover:text-accent transition-colors">
                 {feature.title}
               </h3>
               <p className="text-slate-500 text-sm leading-relaxed font-light">

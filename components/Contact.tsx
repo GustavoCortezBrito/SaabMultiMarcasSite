@@ -105,7 +105,7 @@ export default function Contact() {
           </p>
         </motion.div>
         
-        <div className="grid lg:grid-cols-12 gap-12 mb-24">
+        <div className="grid lg:grid-cols-12 gap-8 md:gap-12 mb-24">
           {/* Contact Info Cards */}
           <div className="lg:col-span-5 space-y-4">
             {contactInfo.map((info, idx) => (
@@ -116,16 +116,16 @@ export default function Contact() {
                 initial={{ opacity: 0, x: -30 }}
                 animate={isInView ? { opacity: 1, x: 0 } : {}}
                 transition={{ delay: 0.1 * idx }}
-                className="flex items-center gap-6 p-6 rounded-[2rem] bg-surface border border-slate-100 hover:border-accent group transition-all duration-500"
+                className="flex items-center gap-4 md:gap-6 p-4 md:p-6 rounded-2xl md:rounded-[2rem] bg-surface border border-slate-100 hover:border-accent group transition-all duration-500 overflow-hidden"
               >
-                <div className="w-14 h-14 rounded-2xl bg-white shadow-sm flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500 group-hover:rotate-[15deg]">
+                <div className="w-12 h-12 md:w-14 md:h-14 shrink-0 rounded-xl md:rounded-2xl bg-white shadow-sm flex items-center justify-center text-accent group-hover:bg-accent group-hover:text-white transition-all duration-500 group-hover:rotate-[15deg]">
                   {info.icon}
                 </div>
-                <div className="flex-grow">
-                  <span className="text-[10px] text-slate-400 uppercase font-black tracking-widest block mb-1">{info.label}</span>
-                  <span className="text-primary font-bold tracking-tight group-hover:text-accent transition-colors">{info.value}</span>
+                <div className="flex-grow min-w-0">
+                  <span className="text-[9px] md:text-[10px] text-slate-400 uppercase font-black tracking-widest block mb-1">{info.label}</span>
+                  <span className="text-primary font-bold tracking-tight group-hover:text-accent transition-colors text-sm md:text-base break-words block">{info.value}</span>
                 </div>
-                <ExternalLink size={16} className="text-slate-300 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0" />
+                <ExternalLink size={14} className="text-slate-300 shrink-0 opacity-0 group-hover:opacity-100 transition-all -translate-x-2 group-hover:translate-x-0 hidden md:block" />
               </motion.a>
             ))}
           </div>
@@ -135,18 +135,18 @@ export default function Contact() {
             initial={{ opacity: 0, scale: 0.95 }}
             animate={isInView ? { opacity: 1, scale: 1 } : {}}
             transition={{ duration: 0.8, delay: 0.4 }}
-            className="lg:col-span-7 bg-primary p-10 md:p-12 rounded-[3rem] shadow-premium relative overflow-hidden group"
+            className="lg:col-span-7 bg-primary p-6 md:p-12 rounded-[2rem] md:rounded-[3rem] shadow-premium relative overflow-hidden group"
           >
             <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 blur-3xl -z-0" />
             
             <div className="relative z-10">
-              <h3 className="text-3xl font-black text-white mb-8 tracking-tight">Envie uma Mensagem</h3>
-              <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-6">
+              <h3 className="text-2xl md:text-3xl font-black text-white mb-8 tracking-tight">Envie uma Mensagem</h3>
+              <form onSubmit={handleSubmit} className="grid md:grid-cols-2 gap-4 md:gap-6">
                 <input type="hidden" name="_subject" value="Nova mensagem do site SAAB Multimarcas" />
                 <input type="hidden" name="_captcha" value="false" />
                 
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Nome Completo</label>
+                <div className="space-y-1.5 md:space-y-2">
+                  <label className="text-[9px] md:text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Nome Completo</label>
                   <input
                     type="text"
                     name="nome"
@@ -154,12 +154,12 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="Como podemos te chamar?"
                     required
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600"
+                    className="w-full px-5 md:px-6 py-3.5 md:py-4 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600 text-sm md:text-base"
                   />
                 </div>
 
-                <div className="space-y-2">
-                  <label className="text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">E-mail</label>
+                <div className="space-y-1.5 md:space-y-2">
+                  <label className="text-[9px] md:text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">E-mail</label>
                   <input
                     type="email"
                     name="email"
@@ -167,12 +167,12 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="seu@email.com"
                     required
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600"
+                    className="w-full px-5 md:px-6 py-3.5 md:py-4 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600 text-sm md:text-base"
                   />
                 </div>
 
-                <div className="space-y-2 md:col-span-2">
-                  <label className="text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Telefone / WhatsApp</label>
+                <div className="space-y-1.5 md:space-y-2 md:col-span-2">
+                  <label className="text-[9px] md:text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Telefone / WhatsApp</label>
                   <input
                     type="tel"
                     name="telefone"
@@ -180,12 +180,12 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="(00) 00000-0000"
                     required
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600"
+                    className="w-full px-5 md:px-6 py-3.5 md:py-4 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600 text-sm md:text-base"
                   />
                 </div>
 
-                <div className="space-y-2 md:col-span-2">
-                  <label className="text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Sua Mensagem</label>
+                <div className="space-y-1.5 md:space-y-2 md:col-span-2">
+                  <label className="text-[9px] md:text-[10px] uppercase font-black text-slate-500 tracking-widest ml-4">Sua Mensagem</label>
                   <textarea
                     name="mensagem"
                     value={formData.mensagem}
@@ -193,7 +193,7 @@ export default function Contact() {
                     placeholder="No que podemos te ajudar hoje?"
                     rows={4}
                     required
-                    className="w-full px-6 py-4 bg-white/5 border border-white/10 rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600 resize-none"
+                    className="w-full px-5 md:px-6 py-3.5 md:py-4 bg-white/5 border border-white/10 rounded-xl md:rounded-2xl focus:border-accent focus:bg-white/10 outline-none transition-all text-white placeholder:text-slate-600 resize-none text-sm md:text-base"
                   />
                 </div>
 
@@ -202,12 +202,12 @@ export default function Contact() {
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
-                    className="btn-premium btn-gold w-full !py-5 text-lg"
+                    className="btn-premium btn-gold w-full !py-4 md:!py-5 text-base md:text-lg"
                   >
                     <Send size={20} />
                     Enviar agora
                   </motion.button>
-                  <p className="text-[10px] text-slate-500 text-center mt-6 uppercase tracking-widest font-medium">
+                  <p className="text-[9px] md:text-[10px] text-slate-500 text-center mt-6 uppercase tracking-widest font-medium">
                     Aprovação de financiamento em até 24 horas
                   </p>
                 </div>

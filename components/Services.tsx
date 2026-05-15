@@ -43,7 +43,7 @@ export default function Services() {
   ];
 
   return (
-    <section id="servicos" ref={ref} className="py-24 px-6 bg-primary relative overflow-hidden">
+    <section id="servicos" ref={ref} className="py-20 md:py-24 px-6 bg-primary relative overflow-hidden">
       {/* Dynamic Background */}
       <div className="absolute top-0 left-0 w-full h-full opacity-10 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[500px] h-[500px] bg-accent/20 blur-[150px] rounded-full" />
@@ -55,17 +55,17 @@ export default function Services() {
           initial={{ opacity: 0, y: 30 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.8 }}
-          className="text-center mb-20"
+          className="text-center mb-16 md:mb-20"
         >
           <h2 className="text-4xl md:text-6xl font-black text-white mb-6 tracking-tight">
             Nossos <span className="text-gradient-gold">Serviços</span>
           </h2>
-          <p className="text-slate-400 text-lg max-w-2xl mx-auto font-light leading-relaxed">
+          <p className="text-slate-400 text-base md:text-lg max-w-2xl mx-auto font-light leading-relaxed">
             Soluções completas para você realizar o melhor negócio com segurança e agilidade.
           </p>
         </motion.div>
         
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
           {services.map((service, index) => (
             <motion.div
               key={index}
@@ -73,12 +73,12 @@ export default function Services() {
               animate={isInView ? { opacity: 1, scale: 1 } : {}}
               transition={{ delay: 0.2 + (index * 0.1), duration: 0.6 }}
               whileHover={{ y: -10, backgroundColor: "rgba(255, 255, 255, 0.05)" }}
-              className="p-10 rounded-[2.5rem] border border-white/5 bg-white/5 backdrop-blur-sm transition-all duration-500 group"
+              className="p-8 md:p-10 rounded-[2rem] md:rounded-[2.5rem] border border-white/5 bg-white/5 backdrop-blur-sm transition-all duration-500 group"
             >
-              <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-8 group-hover:bg-accent group-hover:text-primary transition-all duration-500">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-accent/10 flex items-center justify-center text-accent mb-6 md:mb-8 group-hover:bg-accent group-hover:text-primary transition-all duration-500">
                 {service.icon}
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight group-hover:text-accent transition-colors">
+              <h3 className="text-xl md:text-2xl font-bold text-white mb-3 md:mb-4 tracking-tight group-hover:text-accent transition-colors">
                 {service.title}
               </h3>
               <p className="text-slate-400 text-sm leading-relaxed font-light">
